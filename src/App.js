@@ -1,13 +1,16 @@
 import Loginpage from "./components/loginpage";
 import Landingpage from "./components/landingpage";
-import { Routes, Route, Link, Navigate } from "react-router-dom"
+import { Routes, Route, Navigate } from "react-router-dom";
 import Churchers from "./components/churches";
 import ChurchDetails from "./components/chruchDetails";
 import SignUpPage from "./components/signUp/sign-up";
 
+
 function App() {
   return (
-    <div >
+    <div>
+    
+
       <Routes>
         <Route path="/" element={<Landingpage />} />
         <Route path="/login" element={<Loginpage />} />
