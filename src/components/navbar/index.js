@@ -2,10 +2,10 @@ import styled from "@emotion/styled";
 import { Link } from "react-router-dom";
 
 const NavHolder = styled.div`
-    background-color:red;
+    background-color: red;
     border-radius: 50%;
-    width:100px;
-    height:100px;
+    width: 100px;
+    height: 100px;
 `;
 export default function NavCircle() {
     return (
