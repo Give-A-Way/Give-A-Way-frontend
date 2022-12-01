@@ -4,11 +4,14 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import Churchers from "./components/churches";
 import ChurchDetails from "./components/chruchDetails";
 import SignUpPage from "./components/signUp/sign-up";
+import styled from "@emotion/styled";
 
-
+const AppBody = styled.div`
+  background-color:gray;
+`;
 function App() {
   return (
-    <div>
+    <AppBody>
     
 
       <Routes>
@@ -19,7 +22,7 @@ function App() {
         <Route path="/church/:id" element={<ChurchDetails />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
-    </div>
+    </AppBody>
   );
 }
 
