@@ -22,9 +22,10 @@ export default function Loginpage() {
         e.preventDefault();
         console.log(e)
     }
+    
     return (
         <SignUpPageBody>
-            <NavCircle/>
+            <NavCircle routerLinks={[{ link: '../', name: "home" }, { link: '/', name: "login" }, { link: '../signup', name: "signup" }, { link: '../church', name: "church" }]} />
                 <SignUpForm onSubmit={getData}>
                     <label>UserName:</label>
                     <br />
@@ -35,28 +36,6 @@ export default function Loginpage() {
                     <SignUpInput type="password" id="password" name="password" />
                     <br />
                     <input type="submit" style={{ margin: "0 0 20px 0" }} />
-            </SignUpForm>
-            <SignUpForm onSubmit={getData}>
-                <label>UserName:</label>
-                <br />
-                <SignUpInput type="text" id="fname" name="fname" />
-                <br />
-                <label>Password:</label>
-                <br />
-                <SignUpInput type="password" id="password" name="password" />
-                <br />
-                <input type="submit" style={{ margin: "0 0 20px 0" }} />
-            </SignUpForm>
-            <SignUpForm onSubmit={getData}>
-                <label>UserName:</label>
-                <br />
-                <SignUpInput type="text" id="fname" name="fname" />
-                <br />
-                <label>Password:</label>
-                <br />
-                <SignUpInput type="password" id="password" name="password" />
-                <br />
-                <input type="submit" style={{ margin: "0 0 20px 0" }} />
             </SignUpForm>
         </SignUpPageBody >
     )

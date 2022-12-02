@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import NavCircle from "../navbar";
 
 const SignUpPageBody = styled.div`
     background-color:gray;
@@ -23,24 +24,25 @@ export default function SignUpPage() {
     }
     return (
         <SignUpPageBody>
+            <NavCircle routerLinks={[{ link: '../', name: "home" }, { link: '../login', name: "login" }, { link: '../church', name: "church" }]} />
             <SignUpForm onSubmit={getData}>
-                <label for="fname">UserName:</label>
+                <label >UserName:</label>
                 <br />
                 <SignUpInput type="text" id="fname" name="fname" />
                 <br/>
-                <label for="email">Email:</label>
+                <label >Email:</label>
                 <br />
                 <SignUpInput type="text" id="email" name="email" />
                 <br />
-                <label for="company-name">Company Name:</label>
+                <label >Company Name:</label>
                 <br />
                 <SignUpInput type="text" id="company-name" name="company-name" />
                 <br />
-                <label for="password">Password:</label>
+                <label >Password:</label>
                 <br />
                 <SignUpInput type="password" id="password" name="password" />
                 <br />
-                <label for="cpassword">Confirm Password:</label>
+                <label >Confirm Password:</label>
                 <br />
                 <SignUpInput type="password" id="cpassword" name="cpassword" />
                 <br/>

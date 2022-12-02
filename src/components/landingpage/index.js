@@ -33,7 +33,7 @@ export default function Landingpage() {
         />
       </MDBCarousel>
       <GalleryDiv></GalleryDiv>
-      <NavCircle />
+      <NavCircle routerLinks={[{ link: '/', name: "home" }, { link: 'login', name: "login" }, { link: 'signup', name: "signup" }, { link: 'church', name: "church" }]} />
       <h1>home page</h1>
      
 
@@ -43,7 +43,8 @@ export default function Landingpage() {
             width={343}
             height={201}
             src="https://www.stpaul.gov/sites/default/files/Media%20Root/Planning%20%26%20Economic%20Development/make-connections.png"
-          ></img>
+            alt="https://www.stpaul.gov/sites/default/files/Media%20Root/Planning%20%26%20Economic%20Development/make-connections.png"
+          />
           <p>What Give-A-Way does</p>
         </div>
         <div className="item2">
@@ -51,12 +52,17 @@ export default function Landingpage() {
             width={343}
             height={201}
             src="https://alearningbeeacademy.org/wp-content/uploads/2020/05/ALB-Pics18.jpg"
-          ></img>
+            alt="https://alearningbeeacademy.org/wp-content/uploads/2020/05/ALB-Pics18.jpg"
+          />
           <p>Why we do this</p>
         </div>
         <div className="item3">
-          <img width={343} 
-          src="http://files.cluster2.hgsitebuilder.com/hostgator49813/image/helpinghandslicensed2.jpg"></img>
+          <img
+            width={343} 
+            height={201}
+            src="http://files.cluster2.hgsitebuilder.com/hostgator49813/image/helpinghandslicensed2.jpg"
+            alt="http://files.cluster2.hgsitebuilder.com/hostgator49813/image/helpinghandslicensed2.jpg"
+          />
           
           <p>Our dream</p>
         </div>

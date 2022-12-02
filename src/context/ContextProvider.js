@@ -3,9 +3,12 @@ import { useState } from "react"
 
 function ContextProvider({ children }) {
     const [userName, setUserName] = useState(false)
+    const [churchData, setChurchData] = useState([])
     const state = {
         userName,
-        setUserName
+        churchData,
+        setUserName,
+        setChurchData
     }
 
     return (
