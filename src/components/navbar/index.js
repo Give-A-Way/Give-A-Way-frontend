@@ -33,7 +33,7 @@ const ExitNav = styled.h1`
     margin: 0px;
 `
 
-export default function NavCircle() {
+export default function NavCircle(props) {
     const [navHolderColor, setNavHolderColor] = useState("flex")
     const [navItemsDiaplay, setNavItemsDiaplay] = useState("none")
 
@@ -46,27 +46,21 @@ export default function NavCircle() {
         setNavItemsDiaplay("none")
         console.log(navHolderColor, navItemsDiaplay)
     }
+    let navLinkist = props.routerLinks.map((val,i) => { 
+        return <NavMenuButton key={`${i}navItem`} displayNavMenue="flex" ><Link to={val.link}>{val.name}</Link></NavMenuButton>
+
+    })
+
     return (
         <NavHolder onClick={() => { showNavItems() }}>
             <NavMenuButton displayNavMenue={navHolderColor}>
                 <MenuText>Menu</MenuText>
             </NavMenuButton>
             <NavItems displayNavMenue={navItemsDiaplay}>
-                <NavMenuButton displayNavMenue="flex" >
-                    <Link to="/">home</Link>
-                </NavMenuButton>
-                <NavMenuButton displayNavMenue="flex" onClick={()=>{hideNavItesm()}}>
+                <NavMenuButton key="navItemExit" displayNavMenue="flex" onClick={()=>{hideNavItesm()}}>
                     <ExitNav onClick={() => { hideNavItesm() }}>X</ExitNav>
                 </NavMenuButton>
-                <NavMenuButton displayNavMenue="flex">
-                    <Link to="login">login</Link>
-                </NavMenuButton>
-                <NavMenuButton displayNavMenue="flex">
-                    <Link to="signup">signUp</Link>
-                </NavMenuButton>
-                <NavMenuButton displayNavMenue="flex">
-                    <Link to="church">churches</Link>
-                </NavMenuButton>
+                {navLinkist}
             </NavItems>
         </NavHolder>
     )
