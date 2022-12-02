@@ -64,6 +64,9 @@ export default function NavCircle() {
                 <NavMenuButton displayNavMenue="flex">
                     <Link to="signup">signUp</Link>
                 </NavMenuButton>
+                <NavMenuButton displayNavMenue="flex">
+                    <Link to="church">churches</Link>
+                </NavMenuButton>
             </NavItems>
         </NavHolder>
     )
