@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+
 const ListChurches = (props) => {
 
   return (
@@ -8,7 +9,8 @@ const ListChurches = (props) => {
         width={343}
         height={201}
         src={props.churchImg}
-      ></img>
+        alt={props.churchImg}
+      />
       <p>
         {" "}
         <strong>Address:</strong> {props.address}

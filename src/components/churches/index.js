@@ -1,5 +1,13 @@
-import { Link } from "react-router-dom";
 import ListChurches from "./Chruch_listing";
+
+import styled from "@emotion/styled";
+import NavCircle from "../navbar";
+
+const ChurchesDiv = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center
+`;
 export default function Church() { 
     
     let cache = [
@@ -38,7 +46,10 @@ export default function Church() {
 
     return (
         <div>
-         {listOfChurches}
+            <NavCircle />
+            <ChurchesDiv>
+                {listOfChurches}
+            </ChurchesDiv>
         </div>
     )
 }
