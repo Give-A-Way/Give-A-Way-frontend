@@ -9,6 +9,21 @@ const GalleryDiv = styled.div`
   height: 300px;
   background-color: red;
 `;
+const AboutUs = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
+`;
+const InformationBox = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 50px 0;
+`;
+const Text = styled.p`
+  width: 200px;
+`;
 export default function Landingpage() {
   return (
     <div>
@@ -16,47 +31,51 @@ export default function Landingpage() {
         <MDBCarouselItem
           className="w-100 d-block"
           itemId={1}
+          height={500}
           src="https://gray-wdam-prod.cdn.arcpublishing.com/resizer/6PHBIGGn9iUqfMw6c5lAk33EZMg=/1200x675/smart/filters:quality(85)/cloudfront-us-east-1.images.arcpublishing.com/gray/FIVPU6JDKJGSVJSSW7AEIP3MEQ.png"
           alt="..."
         />
         <MDBCarouselItem
           className="w-100 d-block"
           itemId={2}
+          height={500}
           src="https://images.squarespace-cdn.com/content/v1/5e39e98fcdcacd07d69d9e85/1586373544205-M62HQS4RNJI39TYYDWAY/Josepharvest.png"
           alt="..."
         />
         <MDBCarouselItem
           className="w-100 d-block"
           itemId={3}
+          height={500}
           src="https://www.restaurant-hospitality.com/sites/restaurant-hospitality.com/files/styles/article_featured_retina/public/uploads/2015/06/promotakeout-packaging.jpg?itok=aiy93-Pl"
           alt="..."
         />
       </MDBCarousel>
-      <GalleryDiv></GalleryDiv>
+      {/* <GalleryDiv></GalleryDiv> */}
       <NavCircle routerLinks={[{ link: '/', name: "home" }, { link: 'login', name: "login" }, { link: 'signup', name: "signup" }, { link: 'church', name: "church" }]} />
       <h1>home page</h1>
      
 
-      <div id="Container">
-        <div className="item1">
+      <AboutUs>
+        <InformationBox>
           <img
             width={343}
             height={201}
             src="https://www.stpaul.gov/sites/default/files/Media%20Root/Planning%20%26%20Economic%20Development/make-connections.png"
             alt="https://www.stpaul.gov/sites/default/files/Media%20Root/Planning%20%26%20Economic%20Development/make-connections.png"
           />
-          <p>What Give-A-Way does</p>
-        </div>
-        <div className="item2">
+          <Text>What Give-A-Way does</Text>
+        </InformationBox>
+        <InformationBox>
+          <Text>Why we do this</Text>
           <img
             width={343}
             height={201}
             src="https://alearningbeeacademy.org/wp-content/uploads/2020/05/ALB-Pics18.jpg"
             alt="https://alearningbeeacademy.org/wp-content/uploads/2020/05/ALB-Pics18.jpg"
           />
-          <p>Why we do this</p>
-        </div>
-        <div className="item3">
+          
+        </InformationBox>
+        <InformationBox>
           <img
             width={343} 
             height={201}
@@ -64,9 +83,9 @@ export default function Landingpage() {
             alt="http://files.cluster2.hgsitebuilder.com/hostgator49813/image/helpinghandslicensed2.jpg"
           />
           
-          <p>Our dream</p>
-        </div>
-      </div>
+          <Text>Our dream</Text>
+        </InformationBox>
+      </AboutUs>
     </div>
     
   );

@@ -38,13 +38,15 @@ export default function NavCircle(props) {
     const [navItemsDiaplay, setNavItemsDiaplay] = useState("none")
 
     const showNavItems = () => {
-        setNavHolderColor("none")
-        setNavItemsDiaplay("grid")
+        console.log(navHolderColor, navItemsDiaplay)
+        setNavHolderColor("none");
+        setNavItemsDiaplay("grid");
+        console.log(navHolderColor, navItemsDiaplay)
     }
     const hideNavItesm = () => {
         setNavHolderColor("flex")
         setNavItemsDiaplay("none")
-        console.log(navHolderColor, navItemsDiaplay)
+        
     }
     let navLinkist = props.routerLinks.map((val,i) => { 
         return <NavMenuButton key={`${i}navItem`} displayNavMenue="flex" ><Link to={val.link}>{val.name}</Link></NavMenuButton>
@@ -52,8 +54,8 @@ export default function NavCircle(props) {
     })
 
     return (
-        <NavHolder onClick={() => { showNavItems() }}>
-            <NavMenuButton displayNavMenue={navHolderColor}>
+        <NavHolder>
+            <NavMenuButton displayNavMenue={navHolderColor} onClick={() => { showNavItems() }}>
                 <MenuText>Menu</MenuText>
             </NavMenuButton>
             <NavItems displayNavMenue={navItemsDiaplay}>
