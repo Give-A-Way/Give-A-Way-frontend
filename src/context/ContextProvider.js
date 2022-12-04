@@ -2,15 +2,17 @@ import Context from "./Context"
 import { useState } from "react"
 
 function ContextProvider({ children }) {
-    const [userName, setUserName] = useState(false)
+    const [isUserLogedIn, setIsUserLogedIn] = useState(false)
     const [churchData, setChurchData] = useState([])
+    const [userData, setUserData] = useState(null)
     const state = {
-        userName,
+        isUserLogedIn,
+        userData,
         churchData,
-        setUserName,
-        setChurchData
+        setIsUserLogedIn,
+        setChurchData,
+        setUserData
     }
-
     return (
         <Context.Provider value={state}>
             {children}
