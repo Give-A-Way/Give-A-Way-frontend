@@ -1,9 +1,10 @@
 import NavCircle from "../navbar";
 import styled from "@emotion/styled";
+import { useEffect, useContext, useState } from "react";
+import Context from "../../context/Context";
+import { useNavigate } from "react-router-dom";
 
-const SignUpPageBody = styled.div`
-    
-`;
+const SignUpPageBody = styled.div``;
 
 const SignUpForm = styled.form`
     border: 3px solid red;
@@ -18,9 +19,52 @@ const SignUpInput = styled.input`
 `;
 
 export default function Loginpage() { 
+    const { setIsUserLogedIn, setUserData } = useContext(Context)
+    const [logInAuthentication, setLogInAuthentication] = useState(null) 
+    const navigate = useNavigate();
+    const goToLandingPage = () => {
+        navigate('../');
+    } 
+    useEffect(() => { 
+        async function run() { 
+            var myHeaders = new Headers();
+            myHeaders.append("Content-Type", "application/json");
+
+            var raw = JSON.stringify({
+                "userName": logInAuthentication.userName.value,
+                "password": logInAuthentication.password.value
+            });
+
+            var requestOptions = {
+                method: 'POST',
+                headers: myHeaders,
+                body: raw,
+                redirect: 'follow'
+            };
+
+            let getUserData =await fetch("http://localhost:3100/authentication/login", requestOptions)
+                .then(response => response.json())
+            // console.log(getUserData)
+            if (getUserData.message) { 
+                console.log(getUserData.message)
+            } else { 
+                console.log(getUserData[0])
+                setIsUserLogedIn(true)
+                setUserData(getUserData[0])
+                goToLandingPage()
+            }
+        }
+        if (logInAuthentication) {
+            run()
+            
+        }
+    }, [logInAuthentication])
     const getData = (e) => {
         e.preventDefault();
-        console.log(e)
+        setLogInAuthentication({
+            userName: e.target["fname"],
+            password: e.target["password"],
+        })
     }
     
     return (

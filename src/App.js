@@ -8,7 +8,7 @@ import styled from "@emotion/styled";
 import { useEffect, useContext} from "react";
 import Context from "./context/Context"
 
-const AppBody = styled.div`
+const AppBodyHere = styled.div`
   background-color:gray;
 `;
 function App() {
@@ -16,16 +16,13 @@ function App() {
 
   useEffect(() => { 
     async function getData() {
-      let getChurchData = await fetch("http://localhost:3100/listings")
-        .then(response => response.json())
+      let getChurchData = await fetch("http://localhost:3100/listings") .then(response => response.json())
       setChurchData(getChurchData)
     }
     getData()
   }, [setChurchData])
   return (
-    <AppBody>
-    
-
+    <AppBodyHere>
       <Routes>
         <Route path="/" element={<Landingpage />} />
         <Route path="login" element={<Loginpage />} />
@@ -34,7 +31,7 @@ function App() {
         <Route path="church/:id" element={<ChurchDetails />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
-    </AppBody>
+    </AppBodyHere>
   );
 }
 
