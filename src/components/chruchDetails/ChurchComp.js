@@ -1,25 +1,29 @@
-import { useEffect,useState } from "react";
+import { useEffect, useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import Context from "../../context/Context";
 
 
 
 const Details = (props) => {
-
-  // useEffect(() => {
-    async function changeData() {
-      const data = await fetch("http://localhost:3100/listings/:id", {
-        method: "PATCH",
-        headers: { "Content-type": "application/json" },
-        body: JSON.stringify({ id: props.id })
-      }
-      ).then(response => response.json())
-
+  const { setdoNate, doNate } = useContext(Context)
+  async function changeData() {
+    const data = await fetch("http://localhost:3100/listings/:id", {
+      method: "PATCH",
+      headers: { "Content-type": "application/json" },
+      body: JSON.stringify({ id: props.id })
     }
-  // }, [])
+    ).then(response => response.json())
 
+  }
+  const navigate = useNavigate();
+  const goToHomePage = () => {
+    navigate('/church');
+  } 
   const changeStatus = (e) => {
     e.preventDefault();
     changeData()
-    console.log(props.id)
+    setdoNate(doNate+1)
+    goToHomePage()
   }
 
   return (
