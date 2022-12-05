@@ -58,7 +58,7 @@ export default function Landingpage() {
         />
       </MDBCarousel>
       {/* <GalleryDiv></GalleryDiv> */}
-      <NavCircle routerLinks={isUserLogedIn ? [{ name: "signOut" }, { link: 'church', name: "church" }] : [{ link: 'login', name: "login" }, { link: 'signup', name: "signup" }, { link: 'church', name: "church" }]} />
+      <NavCircle routerLinks={isUserLogedIn ? [, { link: 'church', name: "church" }] : [{ link: 'church', name: "church" }, { link: 'login', name: "login" }, { link: 'signup', name: "signup" }]} />
       <AboutUs>
         <InformationBox>
           <img

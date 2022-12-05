@@ -5,13 +5,16 @@ function ContextProvider({ children }) {
     const [isUserLogedIn, setIsUserLogedIn] = useState(false)
     const [churchData, setChurchData] = useState([])
     const [userData, setUserData] = useState(null)
+    const [doNate, setdoNate] = useState(0)
     const state = {
         isUserLogedIn,
         userData,
         churchData,
         setIsUserLogedIn,
         setChurchData,
-        setUserData
+        setUserData,
+        doNate,
+        setdoNate
     }
     return (
         <Context.Provider value={state}>

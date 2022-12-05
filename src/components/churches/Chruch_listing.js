@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import Context from "../../context/Context";
 
 const ListChurches = (props) => {
-
+  const { isUserLogedIn } = useContext(Context)
   return (
     <div>
       <h2>{props.title}</h2>
@@ -18,9 +20,10 @@ const ListChurches = (props) => {
       <p>
         <strong>Status:</strong> {props.status}
       </p>
-      <button>
+      {isUserLogedIn? <button>
         <Link to={`${props.linkID}`}>Donate</Link>
-      </button>
+      </button> : <h1>Must be loged in to donate</h1>
+      }
     </div>
   );
 };

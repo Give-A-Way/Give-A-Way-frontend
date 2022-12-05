@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
-
+import Context from "../../context/Context";
 const NavHolder = styled.div`
     position: sticky;
     top: 20px;
@@ -36,22 +36,25 @@ const ExitNav = styled.h1`
 export default function NavCircle(props) {
     const [navHolderColor, setNavHolderColor] = useState("flex")
     const [navItemsDiaplay, setNavItemsDiaplay] = useState("none")
-
+    const { isUserLogedIn, setIsUserLogedIn, setUserData } = useContext(Context)
     const showNavItems = () => {
         console.log(navHolderColor, navItemsDiaplay)
         setNavHolderColor("none");
         setNavItemsDiaplay("grid");
-        console.log(navHolderColor, navItemsDiaplay)
     }
     const hideNavItesm = () => {
         setNavHolderColor("flex")
         setNavItemsDiaplay("none")
-        
+
     }
-    let navLinkist = props.routerLinks.map((val,i) => { 
+    let navLinkist = props.routerLinks.map((val, i) => {
         return <NavMenuButton key={`${i}navItem`} displayNavMenue="flex" ><Link to={val.link}>{val.name}</Link></NavMenuButton>
 
     })
+    const userSignOut = () => {
+        setIsUserLogedIn(false)
+        setUserData(null)
+    }
 
     return (
         <NavHolder>
@@ -59,9 +62,13 @@ export default function NavCircle(props) {
                 <MenuText>Menu</MenuText>
             </NavMenuButton>
             <NavItems displayNavMenue={navItemsDiaplay}>
-                <NavMenuButton key="navItemExit" displayNavMenue="flex" onClick={()=>{hideNavItesm()}}>
+                <NavMenuButton key="navItemExit" displayNavMenue="flex" onClick={() => { hideNavItesm() }}>
                     <ExitNav onClick={() => { hideNavItesm() }}>X</ExitNav>
                 </NavMenuButton>
+                {isUserLogedIn ? <NavMenuButton onClick={() => {
+                    userSignOut()
+                    hideNavItesm()
+                }} displayNavMenue="flex" >SignOut</NavMenuButton> : ""}
                 {navLinkist}
             </NavItems>
         </NavHolder>

@@ -69,7 +69,7 @@ export default function Loginpage() {
     
     return (
         <SignUpPageBody>
-            <NavCircle routerLinks={[{ link: '../', name: "home" }, { link: '/', name: "login" }, { link: '../signup', name: "signup" }, { link: '../church', name: "church" }]} />
+            <NavCircle routerLinks={[{ link: '../', name: "home" }, { link: '../signup', name: "signup" }, { link: '../church', name: "church" }]} />
                 <SignUpForm onSubmit={getData}>
                     <label>UserName:</label>
                     <br />

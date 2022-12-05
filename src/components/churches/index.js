@@ -51,7 +51,7 @@ export default function Church() {
 
     return (
         <div>
-            <NavCircle routerLinks={isUserLogedIn ? [{ link: '../', name: "home" },{ name: "signOut" }] :[{ link: '../', name: "home" }, { link: '../login', name: "login" }, { link: '../signup', name: "signup" }]} />
+            <NavCircle routerLinks={isUserLogedIn ? [{ link: '../', name: "home" }] :[{ link: '../', name: "home" }, { link: '../login', name: "login" }, { link: '../signup', name: "signup" }]} />
             <ChurchesDiv>
                 {listOfChurches}
             </ChurchesDiv>

@@ -12,7 +12,7 @@ const AppBodyHere = styled.div`
   background-color:gray;
 `;
 function App() {
-  const { setChurchData } = useContext(Context)
+  const { setChurchData, doNate } = useContext(Context)
 
   useEffect(() => { 
     async function getData() {
@@ -20,7 +20,7 @@ function App() {
       setChurchData(getChurchData)
     }
     getData()
-  }, [setChurchData])
+  }, [setChurchData, doNate])
   return (
     <AppBodyHere>
       <Routes>
