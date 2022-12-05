@@ -4,6 +4,8 @@ import "mdb-react-ui-kit/dist/css/mdb.min.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import { MDBCarousel, MDBCarouselItem } from "mdb-react-ui-kit";
 import "./landingpage.css";
+import { useEffect, useContext } from "react";
+import Context from "../../context/Context";
 
 const GalleryDiv = styled.div`
   height: 300px;
@@ -20,11 +22,16 @@ const InformationBox = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   margin: 50px 0;
+  border: 5px solid red;
 `;
 const Text = styled.p`
-  width: 200px;
+  width: 300px;
+  padding: 20px;
+  margin: 0;
+  color: darkgreen;
 `;
 export default function Landingpage() {
+  const { isUserLogedIn } = useContext(Context)
   return (
     <div>
       <MDBCarousel>
@@ -51,10 +58,7 @@ export default function Landingpage() {
         />
       </MDBCarousel>
       {/* <GalleryDiv></GalleryDiv> */}
-      <NavCircle routerLinks={[{ link: '/', name: "home" }, { link: 'login', name: "login" }, { link: 'signup', name: "signup" }, { link: 'church', name: "church" }]} />
-      <h1>home page</h1>
-     
-
+      <NavCircle routerLinks={isUserLogedIn ? [{ name: "signOut" }, { link: 'church', name: "church" }] : [{ link: 'login', name: "login" }, { link: 'signup', name: "signup" }, { link: 'church', name: "church" }]} />
       <AboutUs>
         <InformationBox>
           <img
@@ -63,7 +67,7 @@ export default function Landingpage() {
             src="https://www.stpaul.gov/sites/default/files/Media%20Root/Planning%20%26%20Economic%20Development/make-connections.png"
             alt="https://www.stpaul.gov/sites/default/files/Media%20Root/Planning%20%26%20Economic%20Development/make-connections.png"
           />
-          <Text>What Give-A-Way does</Text>
+          <Text>What Give-A-Way doesWhat Give-A-Way doesWhat Give-A-Way doesWhat Give-A-Way doesWhatWhat Give-A-Way doesWhat Give-A-Way doesWhatWhat Give-A-Way doesWhat Give-A-Way doesWhat Give-A-Way doesWhat Give-A-Way doesWhat Give-A-Way doesWhat Give-A-Way doesWhat Give-A-Way doesWhat Give-A-Way doesWhat Give-A-Way does</Text>
         </InformationBox>
         <InformationBox>
           <Text>Why we do this</Text>

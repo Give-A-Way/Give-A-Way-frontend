@@ -11,8 +11,9 @@ const ChurchesDiv = styled.div`
 `;
 
 export default function Church() { 
-    const { churchData } = useContext(Context)
-    console.log(churchData)
+    const { churchData, isUserLogedIn } = useContext(Context)
+
+
     // let cache = [
     //     {
     //         title : "Christian Cultural Center Brooklyn",
@@ -50,7 +51,7 @@ export default function Church() {
 
     return (
         <div>
-            <NavCircle routerLinks={[{ link: '../', name: "home" }, { link: '../login', name: "login" }, { link: '../signup', name: "signup" }]} />
+            <NavCircle routerLinks={isUserLogedIn ? [{ link: '../', name: "home" },{ name: "signOut" }] :[{ link: '../', name: "home" }, { link: '../login', name: "login" }, { link: '../signup', name: "signup" }]} />
             <ChurchesDiv>
                 {listOfChurches}
             </ChurchesDiv>
