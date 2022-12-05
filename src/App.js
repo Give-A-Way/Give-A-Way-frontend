@@ -19,6 +19,7 @@ function App() {
       let getChurchData = await fetch("http://localhost:3100/listings") .then(response => response.json())
       setChurchData(getChurchData)
     }
+    console.log("hi")
     getData()
   }, [setChurchData, doNate])
   return (

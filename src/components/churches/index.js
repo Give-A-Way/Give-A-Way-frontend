@@ -37,8 +37,9 @@ export default function Church() {
     //         linkID : 3
     //     }
     // ]
-    const listOfChurches = churchData.map((churches)=>{
-        return <ListChurches 
+    const listOfChurches = churchData.map((churches,i)=>{
+        return <ListChurches
+            key={`Churchkey${i}`}    
             title={churches.church_name}
             churchImg={churches.img}
             address = {churches.location}

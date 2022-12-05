@@ -42,7 +42,7 @@ export default function Loginpage() {
                 redirect: 'follow'
             };
 
-            let getUserData =await fetch("http://localhost:3100/authentication/login", requestOptions)
+            let getUserData = await fetch("http://localhost:3100/authentication/login", requestOptions)
                 .then(response => response.json())
             // console.log(getUserData)
             if (getUserData.message) { 
@@ -79,7 +79,7 @@ export default function Loginpage() {
                     <br />
                     <SignUpInput type="password" id="password" name="password" />
                     <br />
-                    <input type="submit" style={{ margin: "0 0 20px 0" }} />
+                    <input type="submit"/>
             </SignUpForm>
         </SignUpPageBody >
     )

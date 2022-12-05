@@ -38,7 +38,6 @@ export default function NavCircle(props) {
     const [navItemsDiaplay, setNavItemsDiaplay] = useState("none")
     const { isUserLogedIn, setIsUserLogedIn, setUserData } = useContext(Context)
     const showNavItems = () => {
-        console.log(navHolderColor, navItemsDiaplay)
         setNavHolderColor("none");
         setNavItemsDiaplay("grid");
     }
