@@ -2,7 +2,7 @@ import ListChurches from "./Chruch_listing";
 import styled from "@emotion/styled";
 import NavCircle from "../navbar";
 import {useContext} from "react";
-import Context from "../../context/Context"
+import Context from "../../context/Context";
 
 const ChurchesDiv = styled.div`
     display: flex;
@@ -12,7 +12,7 @@ const ChurchesDiv = styled.div`
 
 export default function Church() { 
     const { churchData } = useContext(Context)
-
+    console.log(churchData)
     // let cache = [
     //     {
     //         title : "Christian Cultural Center Brooklyn",
