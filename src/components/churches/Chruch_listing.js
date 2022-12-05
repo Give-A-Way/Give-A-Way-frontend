@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import Context from "../../context/Context";
 
 const ListChurches = (props) => {
   const { isUserLogedIn } = useContext(Context)
+  const [donateError, setDonateError] = useState("")
   return (
     <div>
       <h2>{props.title}</h2>
@@ -20,9 +21,15 @@ const ListChurches = (props) => {
       <p>
         <strong>Status:</strong> {props.status}
       </p>
-      {isUserLogedIn? <button>
+      {isUserLogedIn ? <button>
         <Link to={`${props.linkID}`}>Donate</Link>
-      </button> : <h1>Must be loged in to donate</h1>
+      </button> :
+        <div style={{display:"flex"}}>
+          <button onClick={() => { setDonateError("login first")}}>
+            Donate
+          </button>
+          <p style={{ margin: "5px 10px" }}>{donateError}</p>
+        </div>
       }
     </div>
   );
