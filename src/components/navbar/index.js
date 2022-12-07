@@ -2,16 +2,25 @@ import styled from "@emotion/styled";
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import Context from "../../context/Context";
+
 const NavHolder = styled.div`
     position: sticky;
     top: 20px;
     left: 40px;
-    width: 100px;
-    height: 100px;
+    color: #BCE29E;
+    width: 200px;
+    &:hover{
+        div:nth-child(1){
+            display : none
+        }
+        div:nth-child(2){
+            display : grid
+        }
+    }
 `;
 const NavMenuButton = styled.div`
     cursor: pointer;
-    background-color: red;
+    background-color: #FF8787;
     border-radius: 50%;
     width: 75px;
     height: 75px;
@@ -27,11 +36,10 @@ const NavItems = styled.div`
 `;
 const MenuText = styled.p`
     margin: 0;
-    
-`
+`;
 const ExitNav = styled.h1`
     margin: 0px;
-`
+`;
 
 export default function NavCircle(props) {
     const [navHolderColor, setNavHolderColor] = useState("flex")
@@ -47,7 +55,7 @@ export default function NavCircle(props) {
 
     }
     let navLinkist = props.routerLinks.map((val, i) => {
-        return <NavMenuButton key={`${i}navItem`} displayNavMenue="flex" ><Link to={val.link}>{val.name}</Link></NavMenuButton>
+        return <NavMenuButton key={`${i}navItem`} displayNavMenue="flex" ><Link to={val.link} style={{ color: "#BCE29E" }}> {val.name}</Link></NavMenuButton>
 
     })
     const userSignOut = () => {

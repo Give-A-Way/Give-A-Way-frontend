@@ -34,7 +34,7 @@ export default function Landingpage() {
   const { isUserLogedIn } = useContext(Context)
   return (
     <div>
-      <MDBCarousel>
+      {/* <MDBCarousel>
         <MDBCarouselItem
           className="w-100 d-block"
           itemId={1}
@@ -56,7 +56,7 @@ export default function Landingpage() {
           src="https://www.restaurant-hospitality.com/sites/restaurant-hospitality.com/files/styles/article_featured_retina/public/uploads/2015/06/promotakeout-packaging.jpg?itok=aiy93-Pl"
           alt="..."
         />
-      </MDBCarousel>
+      </MDBCarousel> */}
       {/* <GalleryDiv></GalleryDiv> */}
       <NavCircle routerLinks={isUserLogedIn ? [, { link: 'church', name: "church" }] : [{ link: 'church', name: "church" }, { link: 'login', name: "login" }, { link: 'signup', name: "signup" }]} />
       <AboutUs>
