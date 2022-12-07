@@ -19,7 +19,7 @@ const SignUpInput = styled.input`
 `;
 
 export default function Loginpage() {
-    const { setIsUserLogedIn, setUserData } = useContext(Context)
+    const { setIsUserLogedIn, isUserLogedIn, setUserData } = useContext(Context)
     const [logInAuthentication, setLogInAuthentication] = useState(null)
     const navigate = useNavigate();
     const goToLandingPage = () => {
@@ -69,7 +69,7 @@ export default function Loginpage() {
 
     return (
         <SignUpPageBody>
-            <NavCircle routerLinks={[{ link: '../', name: "home" }, { link: '../signup', name: "signup" }, { link: '../church', name: "church" }]} />
+            <NavCircle routerLinks={isUserLogedIn ? [{ link: '../', name: "home" }, { link: '/', name: "church" }, { link: '../about', name: "about" }] : [{ link: '../', name: "home" }, { link: '../church', name: "church" }, { link: '../about', name: "about" }, { link: '../login', name: "login" }, { link: '../signup', name: "signup" }]} />
             {/* <SignUpForm className="testing-here" onSubmit={getData}>
                     <label>UserName:</label>
                     <br />

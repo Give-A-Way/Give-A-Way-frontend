@@ -1,7 +1,7 @@
 import ListChurches from "./Chruch_listing";
 import styled from "@emotion/styled";
 import NavCircle from "../navbar";
-import {useContext} from "react";
+import { useContext } from "react";
 import Context from "../../context/Context";
 
 const ChurchesDiv = styled.div`
@@ -10,7 +10,7 @@ const ChurchesDiv = styled.div`
     align-items: center
 `;
 
-export default function Church() { 
+export default function Church() {
     const { churchData, isUserLogedIn } = useContext(Context)
 
 
@@ -37,22 +37,25 @@ export default function Church() {
     //         linkID : 3
     //     }
     // ]
-    const listOfChurches = churchData.map((churches,i)=>{
+    const listOfChurches = churchData.map((churches, i) => {
         return <ListChurches
-            key={`Churchkey${i}`}    
+            key={`Churchkey${i}`}
             title={churches.church_name}
             churchImg={churches.img}
-            address = {churches.location}
-            status = {churches.status}
+            address={churches.location}
+            status={churches.status}
             linkID={churches.id}
             phone_number={churches.phone_number}
-            />
+        />
     });
 
 
     return (
         <div>
-            <NavCircle routerLinks={isUserLogedIn ? [{ link: '../', name: "home" }] :[{ link: '../', name: "home" }, { link: '../login', name: "login" }, { link: '../signup', name: "signup" }]} />
+            <NavCircle
+                style={{ position: "absolute", top: "10px" }}
+                routerLinks={isUserLogedIn ? [{ link: '../', name: "home" }, { link: '../church', name: "church" }, { link: '../about', name: "about" }] : [{ link: '../', name: "home" }, { link: '../church', name: "church" }, { link: '../about', name: "about" }, { link: '../login', name: "login" }, { link: '../signup', name: "signup" }]}
+            />
             <ChurchesDiv>
                 {listOfChurches}
             </ChurchesDiv>

@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
-import { useEffect, useState } from "react";
+import { useEffect, useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+import Context from "../../context/Context";
 import NavCircle from "../navbar";
 
 const SignUpFormMessage = styled.h1`
@@ -23,6 +23,7 @@ const SignUpInput = styled.input`
 `;
 
 export default function SignUpPage() {
+    const { setIsUserLogedIn, isUserLogedIn, setUserData } = useContext(Context)
     const [newSignUpData, setNewSignUpData] = useState(null)
     const [signUpFormMessage, setSignUpFormMessage] = useState("")
     const navigate = useNavigate();
@@ -80,7 +81,7 @@ export default function SignUpPage() {
     }
     return (
         <SignUpPageBody>
-            <NavCircle routerLinks={[{ link: '../', name: "home" }, { link: '../login', name: "login" }, { link: '../church', name: "church" }]} />
+            <NavCircle routerLinks={isUserLogedIn ? [{ link: '../', name: "home" }, { link: '../church', name: "church" }, { link: '../about', name: "about" }] : [{ link: '../', name: "home" }, { link: '../church', name: "church" }, { link: '../about', name: "about" }, { link: '../login', name: "login" }, { link: '../signup', name: "signup" }]} />
             <SignUpFormMessage>here{signUpFormMessage}</SignUpFormMessage>
             {/* <SignUpForm onSubmit={getData}>
                 <label >UserName:</label>
