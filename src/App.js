@@ -5,18 +5,18 @@ import Church from "./components/churches";
 import ChurchDetails from "./components/chruchDetails";
 import SignUpPage from "./components/signUp/sign-up";
 import styled from "@emotion/styled";
-import { useEffect, useContext} from "react";
+import { useEffect, useContext } from "react";
 import Context from "./context/Context"
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 const AppBodyHere = styled.div`
-  background-color:gray;
 `;
 function App() {
   const { setChurchData, doNate } = useContext(Context)
 
-  useEffect(() => { 
+  useEffect(() => {
     async function getData() {
-      let getChurchData = await fetch("http://localhost:3100/listings") .then(response => response.json())
+      let getChurchData = await fetch("http://localhost:3100/listings").then(response => response.json())
       setChurchData(getChurchData)
     }
     console.log("hi")
@@ -26,8 +26,11 @@ function App() {
     <AppBodyHere>
       <Routes>
         <Route path="/" element={<Landingpage />} />
+
         <Route path="login" element={<Loginpage />} />
+
         <Route path="signup" element={<SignUpPage />} />
+
         <Route path="church" element={<Church />} />
         <Route path="church/:id" element={<ChurchDetails />} />
         <Route path="*" element={<Navigate to="/" />} />

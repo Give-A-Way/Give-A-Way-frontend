@@ -8,7 +8,6 @@ const SignUpFormMessage = styled.h1`
 
 `;
 const SignUpPageBody = styled.div`
-    background-color:gray;
 `;
 
 const SignUpForm = styled.form`
@@ -29,7 +28,7 @@ export default function SignUpPage() {
     const navigate = useNavigate();
     const goToLogInpPage = () => {
         navigate('../login');
-    } 
+    }
     useEffect(() => {
         async function postUser() {
             var myHeaders = new Headers();
@@ -63,7 +62,7 @@ export default function SignUpPage() {
     }, [newSignUpData])
     const getData = (e) => {
         e.preventDefault();
-        if (e.target["password"].value && e.target["cpassword"].value && e.target["password"].value !== e.target["cpassword"].value) { 
+        if (e.target["password"].value && e.target["cpassword"].value && e.target["password"].value !== e.target["cpassword"].value) {
             setSignUpFormMessage("password do not match")
         } else if (e.target["fname"].value && e.target["email"].value && e.target["company-name"].value && e.target["password"].value && e.target["cpassword"].value) {
             setSignUpFormMessage("Loding..")
@@ -75,7 +74,7 @@ export default function SignUpPage() {
                     "password": e.target["password"].value
                 }
             )
-        } else { 
+        } else {
             setSignUpFormMessage("information missing")
         }
     }
@@ -83,7 +82,7 @@ export default function SignUpPage() {
         <SignUpPageBody>
             <NavCircle routerLinks={[{ link: '../', name: "home" }, { link: '../login', name: "login" }, { link: '../church', name: "church" }]} />
             <SignUpFormMessage>here{signUpFormMessage}</SignUpFormMessage>
-            <SignUpForm onSubmit={getData}>
+            {/* <SignUpForm onSubmit={getData}>
                 <label >UserName:</label>
                 <br />
                 <SignUpInput type="text" id="fname" name="fname" />
@@ -105,7 +104,67 @@ export default function SignUpPage() {
                 <SignUpInput type="password" id="cpassword" name="cpassword" />
                 <br />
                 <input type="submit" style={{ margin: "0 0 20px 0" }} />
-            </SignUpForm>
+            </SignUpForm> */}
+            <div className="auth-wrapper">
+                <div className="auth-inner">
+                    <form onSubmit={getData}>
+                        <h3>Sign Up</h3>
+                        <div className="mb-3">
+                            <label>UserName:</label>
+                            <input
+                                type="text"
+                                className="form-control"
+                                placeholder="First name"
+                                name="fname"
+                            />
+                        </div>
+                        <div className="mb-3">
+                            <label>Email address</label>
+                            <input
+                                type="email"
+                                className="form-control"
+                                placeholder="Enter email"
+                                name="email"
+                            />
+                        </div>
+                        <div className="mb-3">
+                            <label>Company Name:</label>
+                            <input
+                                type="password"
+                                className="form-control"
+                                placeholder="Enter Company Name"
+                                name="company-name"
+                            />
+                        </div>
+                        <div className="mb-3">
+                            <label>Password</label>
+                            <input
+                                type="password"
+                                className="form-control"
+                                placeholder="Enter password"
+                                name="password"
+                            />
+                        </div>
+                        <div className="mb-3">
+                            <label>Confirm Password</label>
+                            <input
+                                type="password"
+                                className="form-control"
+                                placeholder="Enter password"
+                                name="cpassword"
+                            />
+                        </div>
+                        <div className="d-grid">
+                            <button type="submit" className="btn btn-primary">
+                                Sign Up
+                            </button>
+                        </div>
+                        <p className="forgot-password text-right">
+                            Already registered <a href="/sign-in">sign in?</a>
+                        </p>
+                    </form>
+                </div>
+            </div>
         </SignUpPageBody>
     )
 }

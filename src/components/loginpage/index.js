@@ -18,15 +18,15 @@ const SignUpInput = styled.input`
     margin: 0 0 20px;
 `;
 
-export default function Loginpage() { 
+export default function Loginpage() {
     const { setIsUserLogedIn, setUserData } = useContext(Context)
-    const [logInAuthentication, setLogInAuthentication] = useState(null) 
+    const [logInAuthentication, setLogInAuthentication] = useState(null)
     const navigate = useNavigate();
     const goToLandingPage = () => {
         navigate('../');
-    } 
-    useEffect(() => { 
-        async function run() { 
+    }
+    useEffect(() => {
+        async function run() {
             var myHeaders = new Headers();
             myHeaders.append("Content-Type", "application/json");
 
@@ -45,9 +45,9 @@ export default function Loginpage() {
             let getUserData = await fetch("http://localhost:3100/authentication/login", requestOptions)
                 .then(response => response.json())
             // console.log(getUserData)
-            if (getUserData.message) { 
+            if (getUserData.message) {
                 console.log(getUserData.message)
-            } else { 
+            } else {
                 console.log(getUserData[0])
                 setIsUserLogedIn(true)
                 setUserData(getUserData[0])
@@ -56,7 +56,7 @@ export default function Loginpage() {
         }
         if (logInAuthentication) {
             run()
-            
+
         }
     }, [logInAuthentication])
     const getData = (e) => {
@@ -66,11 +66,11 @@ export default function Loginpage() {
             password: e.target["password"],
         })
     }
-    
+
     return (
         <SignUpPageBody>
             <NavCircle routerLinks={[{ link: '../', name: "home" }, { link: '../signup', name: "signup" }, { link: '../church', name: "church" }]} />
-                <SignUpForm onSubmit={getData}>
+            {/* <SignUpForm className="testing-here" onSubmit={getData}>
                     <label>UserName:</label>
                     <br />
                     <SignUpInput type="text" id="fname" name="fname" />
@@ -80,7 +80,40 @@ export default function Loginpage() {
                     <SignUpInput type="password" id="password" name="password" />
                     <br />
                     <input type="submit"/>
-            </SignUpForm>
+            </SignUpForm> */}
+            <div className="auth-wrapper">
+                <div className="auth-inner">
+                    <form onSubmit={getData}>
+                        <h3>Sign In</h3>
+                        <div className="mb-3">
+                            <label>UserName:</label>
+                            <input
+                                type="text"
+                                className="form-control"
+                                placeholder="Enter UserName"
+                                name="fname"
+                            />
+                        </div>
+                        <div className="mb-3">
+                            <label>Password</label>
+                            <input
+                                type="password"
+                                name="password"
+                                className="form-control"
+                                placeholder="Enter password"
+                            />
+                        </div>
+                        <div className="d-grid">
+                            <button type="submit" className="btn btn-primary">
+                                Submit
+                            </button>
+                        </div>
+                        <p className="forgot-password text-right">
+                            Forgot <a href="#">password?</a>
+                        </p>
+                    </form>
+                </div>
+            </div>
         </SignUpPageBody >
     )
 }
