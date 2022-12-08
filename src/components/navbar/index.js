@@ -1,62 +1,18 @@
 import styled from "@emotion/styled";
 import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Context from "../../context/Context";
-
-const NavHolder = styled.div`
-    position: sticky;
-    top: 20px;
-    left: 40px;
-    color: #BCE29E;
-    width: 200px;
-    &:hover{
-        div:nth-child(1){
-            display : none
-        }
-        div:nth-child(2){
-            display : grid
-        }
-    }
-`;
-const NavMenuButton = styled.div`
-    cursor: pointer;
-    background-color: #FF8787;
-    border-radius: 50%;
-    width: 75px;
-    height: 75px;
-    display : ${props => props.displayNavMenue};
-    justify-content: center;
-    align-items: center;
-    margin: 5px;
-`;
-const NavItems = styled.div`
-    display : ${props => props.displayNavMenue};
-    width: 150px;
-    grid-template-columns: 1fr 1fr;
-`;
-const MenuText = styled.p`
-    margin: 0;
-`;
-const ExitNav = styled.h1`
-    margin: 0px;
-`;
+import './nav.css'
 
 export default function NavCircle(props) {
-    const [navHolderColor, setNavHolderColor] = useState("flex")
-    const [navItemsDiaplay, setNavItemsDiaplay] = useState("none")
-    const { isUserLogedIn, setIsUserLogedIn, setUserData } = useContext(Context)
-    const showNavItems = () => {
-        setNavHolderColor("none");
-        setNavItemsDiaplay("grid");
-    }
-    const hideNavItesm = () => {
-        setNavHolderColor("flex")
-        setNavItemsDiaplay("none")
 
+    const { isUserLogedIn, setIsUserLogedIn, setUserData } = useContext(Context)
+    const navigate = useNavigate();
+    const goToHomePage = (link) => {
+        navigate(link);
     }
     let navLinkist = props.routerLinks.map((val, i) => {
-        return <NavMenuButton key={`${i}navItem`} displayNavMenue="flex" ><Link to={val.link} style={{ color: "#BCE29E" }}> {val.name}</Link></NavMenuButton>
-
+        return <li className="menu-item" key={`nave${i}`}><a onClick={() => { goToHomePage(val.link) }}>{val.name}</a></li >
     })
     const userSignOut = () => {
         setIsUserLogedIn(false)
@@ -64,20 +20,16 @@ export default function NavCircle(props) {
     }
 
     return (
-        <NavHolder>
-            <NavMenuButton displayNavMenue={navHolderColor} onClick={() => { showNavItems() }}>
-                <MenuText>Menu</MenuText>
-            </NavMenuButton>
-            <NavItems displayNavMenue={navItemsDiaplay}>
-                <NavMenuButton key="navItemExit" displayNavMenue="flex" onClick={() => { hideNavItesm() }}>
-                    <ExitNav onClick={() => { hideNavItesm() }}>X</ExitNav>
-                </NavMenuButton>
-                {isUserLogedIn ? <NavMenuButton onClick={() => {
-                    userSignOut()
-                    hideNavItesm()
-                }} displayNavMenue="flex" >SignOut</NavMenuButton> : ""}
+        <nav className="menu1">
+            <input className="menu-toggler" type="checkbox" />
+            <label ></label>
+            <ul>
                 {navLinkist}
-            </NavItems>
-        </NavHolder>
+                {isUserLogedIn ? <li className="menu-item" key={`signOuthere`}><a onClick={() => {
+                    userSignOut()
+                    goToHomePage("./")
+                }}>Sign Out</a></li > : ""}
+            </ul>
+        </nav>
     )
 }

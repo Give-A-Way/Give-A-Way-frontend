@@ -37,17 +37,10 @@ console.log(churchData)
 
   return (
     <div>
-      <NavCircle
-        routerLinks={
-          isUserLogedIn
-            ? [{ link: "../", name: "home" }]
-            : [
-                { link: "../", name: "home" },
-                { link: "../login", name: "login" },
-                { link: "../signup", name: "signup" },
-              ]
-        }
-      />
+        <NavCircle
+            style={{ position: "absolute", top: "10px" }}
+            routerLinks={isUserLogedIn ? [{ link: '../', name: "home" }, { link: '../church', name: "church" }, { link: '../about', name: "about" }] : [{ link: '../', name: "home" }, { link: '../church', name: "church" }, { link: '../about', name: "about" }, { link: '../login', name: "login" }, { link: '../signup', name: "signup" }]}
+        />
       <div style={{ 
         marginTop: "32px",
         marginRight: "32px",

@@ -8,6 +8,7 @@ import styled from "@emotion/styled";
 import { useEffect, useContext } from "react";
 import Context from "./context/Context"
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import Aboutpage from "./components/aboutpage";
 
 const AppBodyHere = styled.div`
 `;
@@ -26,11 +27,9 @@ function App() {
     <AppBodyHere>
       <Routes>
         <Route path="/" element={<Landingpage />} />
-
         <Route path="login" element={<Loginpage />} />
-
+        <Route path="about" element={<Aboutpage />}/>
         <Route path="signup" element={<SignUpPage />} />
-
         <Route path="church" element={<Church />} />
         <Route path="church/:id" element={<ChurchDetails />} />
         <Route path="*" element={<Navigate to="/" />} />
