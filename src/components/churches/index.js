@@ -9,10 +9,12 @@ import React, { Component, useState } from "react";
 import { render } from "react-dom";
 
 const ChurchesDiv = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-`;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+
+
 
 export default function Church() {
   const { churchData, isUserLogedIn } = useContext(Context);

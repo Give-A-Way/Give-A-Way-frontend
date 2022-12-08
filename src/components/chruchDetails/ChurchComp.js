@@ -2,8 +2,6 @@ import { useEffect, useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import Context from "../../context/Context";
 
-
-
 const Details = (props) => {
   const { setdoNate, doNate } = useContext(Context)
   // fetch call to backend server
