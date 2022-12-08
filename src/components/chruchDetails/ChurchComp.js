@@ -4,6 +4,7 @@ import Context from "../../context/Context";
 
 const Details = (props) => {
   const { setdoNate, doNate } = useContext(Context)
+  // fetch call to backend server
   async function changeData() {
     const data = await fetch("http://localhost:3100/listings/:id", {
       method: "PATCH",
@@ -17,17 +18,20 @@ const Details = (props) => {
   const goToHomePage = () => {
     navigate('/church');
   } 
+
   const changeStatus = (e) => {
     e.preventDefault();
+    //invokes the function to fetch to the backend
     changeData()
+    // updates the state and places the church donated to to the bottom of the page
     setdoNate(doNate+1)
+    // takes the user back to the hompage
     goToHomePage()
   }
 
   return (
     <div>
       <h2>{props.title}</h2>
-
       <img
         width={343}
         height={201}
@@ -41,10 +45,6 @@ const Details = (props) => {
         </label>
         <input type="submit" value="Submit" />
       </form>
-
-
-      {/* time and date implementation
-      useState to update what the user is donating */}
     </div>
   );
 };

@@ -6,20 +6,9 @@ import { useNavigate } from "react-router-dom";
 
 const SignUpPageBody = styled.div``;
 
-const SignUpForm = styled.form`
-    border: 3px solid red;
-    width: 250px;
-    padding: 30px 0 0 0;
-    text-align: center;
-    margin: auto;
-`;
-
-const SignUpInput = styled.input`
-    margin: 0 0 20px;
-`;
 
 export default function Loginpage() {
-    const { setIsUserLogedIn, setUserData } = useContext(Context)
+    const { setIsUserLogedIn, isUserLogedIn, setUserData } = useContext(Context)
     const [logInAuthentication, setLogInAuthentication] = useState(null)
     const navigate = useNavigate();
     const goToLandingPage = () => {
@@ -69,18 +58,7 @@ export default function Loginpage() {
 
     return (
         <SignUpPageBody>
-            <NavCircle routerLinks={[{ link: '../', name: "home" }, { link: '../signup', name: "signup" }, { link: '../church', name: "church" }]} />
-            {/* <SignUpForm className="testing-here" onSubmit={getData}>
-                    <label>UserName:</label>
-                    <br />
-                    <SignUpInput type="text" id="fname" name="fname" />
-                    <br />
-                    <label>Password:</label>
-                    <br />
-                    <SignUpInput type="password" id="password" name="password" />
-                    <br />
-                    <input type="submit"/>
-            </SignUpForm> */}
+            <NavCircle routerLinks={isUserLogedIn ? [{ link: '../', name: "home" }, { link: '/', name: "church" }, { link: '../about', name: "about" }] : [{ link: '../', name: "home" }, { link: '../church', name: "church" }, { link: '../about', name: "about" }, { link: '../login', name: "login" }, { link: '../signup', name: "signup" }]} />
             <div className="auth-wrapper">
                 <div className="auth-inner">
                     <form onSubmit={getData}>
