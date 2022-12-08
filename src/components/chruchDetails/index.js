@@ -11,13 +11,6 @@ export default function ChurchDetails() {
   const { churchData } = useContext(Context)
   
   const [currPage,setcurrPage] = useState("")
-
-  
-
-
-
-
-
 useEffect(()=>{
   const findId = (id) => {
     setcurrPage(churchData.find((val) => val.id === +id));

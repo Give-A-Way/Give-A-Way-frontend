@@ -130,7 +130,7 @@ export default function SignUpPage() {
                         <div className="mb-3">
                             <label>Company Name:</label>
                             <input
-                                type="password"
+                                type="text"
                                 className="form-control"
                                 placeholder="Enter Company Name"
                                 name="company-name"
