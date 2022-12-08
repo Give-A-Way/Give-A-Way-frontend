@@ -6,8 +6,8 @@ import Context from "../../context/Context";
 
 const ChurchesDiv = styled.div`
     display: flex;
-    flex-direction: column;
-    align-items: center
+    flex-wrap: wrap;
+    justify-content: space-evenly;
 `;
 
 export default function Church() { 
