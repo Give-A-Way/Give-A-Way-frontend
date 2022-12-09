@@ -17,32 +17,31 @@
 
 
 /* Form element setup */
-form {
+#cd-form {
     
     width: 300px;
     margin: 20px 0;
     z-index: 1;
 }
 
-fieldset {
+#cd-form fieldset {
     margin: 0 0 1rem 0;
     padding: 0;
     border: none;
 }
 
-legend {
-    font-weight: 400;
-}
+// legend {
+//     font-weight: 400;
+// }
 
-legend,
-label {
+#cd-form fieldset label {
     display: inline-block;
     margin-bottom: .5rem;
 }
 
-input[type='text'],
-textarea,
-select {
+.cd-input[type='text'],
+.cd-textarea,
+.cd-select {
     display: block;
     padding: .5rem;
     width: 100%;
@@ -60,22 +59,22 @@ select {
     }
 }
 
-textarea {
+.cd-textarea {
     max-width: 300px;
     height: 100px;
 }
 
-input[type='text'],
-select {
+.cd-input[type='text'],
+.cd-select {
     height: 34px;
 }
 
-select {
+.cd-select {
     font-size: .875rem;
 }
 
-input[type='checkbox'],
-input[type='radio'] {
+.cd-input[type='checkbox'],
+.cd-input[type='radio'] {
     position: relative;
     top: 5px;
     width: 22px;
@@ -92,7 +91,7 @@ input[type='radio'] {
     transition-duration: none;
 }
 
-input[type='checkbox'] {
+.cd-input[type='checkbox'] {
     border-radius: 5px;
 
     &:checked {
@@ -111,7 +110,7 @@ input[type='checkbox'] {
     }
 }
 
-input[type='radio'] {
+.cd-input[type='radio'] {
     border-radius: 50%;
 
     &:checked {
