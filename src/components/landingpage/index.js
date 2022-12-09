@@ -8,7 +8,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 function NavCircle(props) {
 
-  const { isUserLogedIn, setIsUserLogedIn, setUserData } = useContext(Context)
+  const { isUserLogedIn, setIsUserLogedIn, setUserData, userData } = useContext(Context)
   const navigate = useNavigate();
   const goToHomePage = (link) => {
     navigate(link);
@@ -20,12 +20,13 @@ function NavCircle(props) {
     setIsUserLogedIn(false)
     setUserData(null)
   }
+  console.log(userData)
 
   return (
     <div>
       <nav className="menu">
         <input className="menu-toggler" type="checkbox" />
-        <label ></label>
+        <label >Menu</label>
         <ul>
           {navLinkist}
           {isUserLogedIn ? <li className="menu-item" key={`signOuthere`}><a onClick={() => {
@@ -42,8 +43,7 @@ export default function Landingpage() {
   const { isUserLogedIn } = useContext(Context)
   return (
     <div>
-      <p>hi there</p>
-      <NavCircle routerLinks={isUserLogedIn ? [{ link: '../', name: "home" }, { link: '../church', name: "church" }, { link: '../about', name: "about" }] : [{ link: '../', name: "home" }, { link: '../church', name: "church" }, { link: '../about', name: "about" }, { link: '../login', name: "login" }, { link: '../signup', name: "signup" }]} />
+      <NavCircle routerLinks={isUserLogedIn ? [{ link: '../', name: "Home" }, { link: '../church', name: "Church" }, { link: '../about', name: "About" }] : [{ link: '../', name: "Home" }, { link: '../church', name: "Church" }, { link: '../about', name: "About" }, { link: '../login', name: "Sign in" }, { link: '../signup', name: "Sign up" }]} />
     </div>
   );
 }

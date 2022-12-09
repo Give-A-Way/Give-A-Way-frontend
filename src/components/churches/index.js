@@ -12,8 +12,8 @@ const ChurchesDiv = styled.div`
    display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
+    padding: 0 80px;
 `
-
 
 export default function Church() {
   const { churchData, isUserLogedIn } = useContext(Context);
@@ -21,7 +21,7 @@ export default function Church() {
     isPaneOpen: false,
     isPaneOpenLeft: false,
   });
-console.log(churchData)
+  console.log(churchData)
   const listOfChurches = churchData.map((churches, i) => {
     return (
       <ListChurches
@@ -38,21 +38,21 @@ console.log(churchData)
 
   return (
     <div>
-        <NavCircle
-            style={{ position: "absolute", top: "10px" }}
-            routerLinks={isUserLogedIn ? [{ link: '../', name: "home" }, { link: '../church', name: "church" }, { link: '../about', name: "about" }] : [{ link: '../', name: "home" }, { link: '../church', name: "church" }, { link: '../about', name: "about" }, { link: '../login', name: "login" }, { link: '../signup', name: "signup" }]}
-        />
-      <div style={{ 
-        marginTop: "32px",
+      <NavCircle
+        style={{ position: "absolute", top: "10px" }}
+      />
+      <h1 style={{textAlign: "center" } }>Church Donation page</h1>
+      <div style={{
+        marginTop: "50px",
         marginRight: "32px",
         display: "flex",
         justifyContent: "flex-end"
-    
-    }}>
-        
-      <button onClick={() => setState({ isPaneOpen: true })}>
-        Past donations
-      </button>
+
+      }}>
+
+        <button onClick={() => setState({ isPaneOpen: true })}>
+          Past donations
+        </button>
       </div>
       <SlidingPane
         className="some-custom-class"
@@ -72,7 +72,7 @@ console.log(churchData)
         <img src="img.png" />
       </SlidingPane>
       <ChurchesDiv>{listOfChurches}</ChurchesDiv>
-      
+
     </div>
   );
 }

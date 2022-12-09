@@ -82,7 +82,7 @@ export default function SignUpPage() {
     return (
         <SignUpPageBody>
             <NavCircle routerLinks={isUserLogedIn ? [{ link: '../', name: "home" }, { link: '../church', name: "church" }, { link: '../about', name: "about" }] : [{ link: '../', name: "home" }, { link: '../church', name: "church" }, { link: '../about', name: "about" }, { link: '../login', name: "login" }, { link: '../signup', name: "signup" }]} />
-            <SignUpFormMessage>here{signUpFormMessage}</SignUpFormMessage>
+            <SignUpFormMessage>{signUpFormMessage}</SignUpFormMessage>
             {/* <SignUpForm onSubmit={getData}>
                 <label >UserName:</label>
                 <br />
@@ -161,7 +161,7 @@ export default function SignUpPage() {
                             </button>
                         </div>
                         <p className="forgot-password text-right">
-                            Already registered <a href="/sign-in">sign in?</a>
+                            Already registered <a href="/login">sign in?</a>
                         </p>
                     </form>
                 </div>

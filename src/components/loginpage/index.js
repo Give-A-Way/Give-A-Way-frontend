@@ -12,7 +12,7 @@ export default function Loginpage() {
     const [logInAuthentication, setLogInAuthentication] = useState(null)
     const navigate = useNavigate();
     const goToLandingPage = () => {
-        navigate('../');
+        navigate('../church');
     }
     useEffect(() => {
         async function run() {

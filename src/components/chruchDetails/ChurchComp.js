@@ -1,6 +1,7 @@
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState, useContext, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import Context from "../../context/Context";
+import confetti from "https://cdn.skypack.dev/canvas-confetti@1";
 import style from "@emotion/styled"
 
 const ChurchComp = style.div`
@@ -50,10 +51,16 @@ const Details = (props) => {
   }, [submissionData]);
   const navigate = useNavigate();
   const goToHomePage = () => {
-    navigate("/church");
-  };
-
+    navigate('/church');
+  } 
+  const rain = useCallback(() => {
+    confetti({
+      particleCount: 400,
+      spread: 200
+    });
+  }, []);
   const changeStatus = (e) => {
+    rain()
     e.preventDefault();
     SetsubmissionData({
       time: e.target[0].value,

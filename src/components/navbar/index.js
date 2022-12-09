@@ -5,31 +5,52 @@ import Context from "../../context/Context";
 import './nav.css'
 
 export default function NavCircle(props) {
-
+    const [navBackground, setNavBackground] = useState("none")
     const { isUserLogedIn, setIsUserLogedIn, setUserData } = useContext(Context)
     const navigate = useNavigate();
     const goToHomePage = (link) => {
         navigate(link);
     }
-    let navLinkist = props.routerLinks.map((val, i) => {
-        return <li className="menu-item" key={`nave${i}`}><a onClick={() => { goToHomePage(val.link) }}>{val.name}</a></li >
+    let navLinkist = [{ link: '../', logo: "icon fa fa-home" }, { link: '../church', logo: "fa fa-university" }, { link: '../about', logo: "fa fa-info-circle" }].map((val, i) => {
+        return <a class={val.logo} onClick={() => { goToHomePage(val.link) }}>{val.name}</a>
     })
     const userSignOut = () => {
         setIsUserLogedIn(false)
         setUserData(null)
     }
-
+    let signOutLogo = [
+        <a
+            class="fa fa-sign-in"
+            onClick={() => {
+                goToHomePage("../login")
+            }}
+        ></a>,
+        <a
+            class="fa fa-user-plus"
+            onClick={() => {
+                goToHomePage("../signup")
+            }}
+        ></a>
+    ]
     return (
-        <nav className="menu1">
-            <input className="menu-toggler" type="checkbox" />
-            <label ></label>
-            <ul>
+        <div class="center-menu-page">
+            <div style={{display:navBackground}} class="nav-background"></div>
+            <label class="menu-button-page" for="menu-open" aria-hidden="true">Menu</label>
+            <input class="menu-open-page" id="menu-open" type="checkbox" aria-hidden="true" onClick={() => {
+                setNavBackground(navBackground === "none"?"block":"none")
+            }}/>
+            <nav class="menu-page" role="navigation">
                 {navLinkist}
-                {isUserLogedIn ? <li className="menu-item" key={`signOuthere`}><a onClick={() => {
-                    userSignOut()
-                    goToHomePage("./")
-                }}>Sign Out</a></li > : ""}
-            </ul>
-        </nav>
+                {isUserLogedIn ? <a
+                    class="fa fa-sign-out"
+                    onClick={() => {
+                        userSignOut()
+                        goToHomePage("../")
+                    }}
+                ></a> : signOutLogo
+                }
+            </nav>
+        </div>
+
     )
 }
