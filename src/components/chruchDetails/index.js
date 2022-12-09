@@ -36,7 +36,7 @@ useEffect(()=>{
       location = {currPage.location}
       id ={currPage.id}
       />
-       <Calendar />
+       {/* <Calendar /> */}
     </ChurchDetailsHolder>
   );
 }
