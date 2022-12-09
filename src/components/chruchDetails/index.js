@@ -5,6 +5,14 @@ import Context from "../../context/Context";
 import Details from "./ChurchComp";
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
+import styled from "@emotion/styled";
+
+
+  const ChurchDetailsHolder = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items:center;
+`;
 
 export default function ChurchDetails() {
   const { id } = useParams();
@@ -21,7 +29,7 @@ useEffect(()=>{
 },[])
 
   return (
-    <div>
+    <ChurchDetailsHolder>
       <Details 
       title={currPage.church_name}
       churchImg={currPage.img}
@@ -29,7 +37,7 @@ useEffect(()=>{
       id ={currPage.id}
       />
        <Calendar />
-    </div>
+    </ChurchDetailsHolder>
   );
 }
 
