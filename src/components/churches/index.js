@@ -9,11 +9,10 @@ import React, { Component, useState } from "react";
 import { render } from "react-dom";
 
 const ChurchesDiv = styled.div`
-
-    display: flex;
+   display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
-
+`
 
 
 export default function Church() {
@@ -59,10 +58,10 @@ console.log(churchData)
         className="some-custom-class"
         overlayClassName="some-custom-overlay-class"
         isOpen={state.isPaneOpen}
-        title="Hey, it is optional pane title.  I can be React component too."
+        title="Time Stamp?"
         from="right"
         width="400px"
-        subtitle="Optional subtitle."
+        subtitle="Give-A-Way"
         onRequestClose={() => {
           // triggered on "<" on left top click or on outside click
           setState({ isPaneOpen: false });
