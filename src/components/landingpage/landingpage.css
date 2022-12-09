@@ -6,8 +6,8 @@
     right: 0;
     left: 0;
     margin: auto;
-    width: 40px;
-    height: 40px;
+    width: 120px;
+    height: 50px;
     z-index: 2;
     opacity: 0;
     cursor: pointer;
@@ -22,32 +22,32 @@
 }
 
 .menu-toggler:checked~ul .menu-item:nth-child(1) {
-    transform: rotate(0deg) translate(-110px);
+    transform: rotate(0deg) translate(-160px);
 }
 
 .menu-toggler:checked~ul .menu-item:nth-child(2) {
-    transform: rotate(60deg) translateX(-110px);
+    transform: rotate(60deg) translateX(-160px);
 }
 
 .menu-toggler:checked~ul .menu-item:nth-child(3) {
-    transform: rotate(120deg) translateX(-110px);
+    transform: rotate(120deg) translateX(-160px);
 }
 
 .menu-toggler:checked~ul .menu-item:nth-child(4) {
-    transform: rotate(180deg) translateX(-110px);
+    transform: rotate(180deg) translateX(-160px);
 }
 
 .menu-toggler:checked~ul .menu-item:nth-child(5) {
-    transform: rotate(240deg) translateX(-110px);
+    transform: rotate(240deg) translateX(-160px);
 }
 
 .menu-toggler:checked~ul .menu-item:nth-child(6) {
-    transform: rotate(300deg) translateX(-110px);
+    transform: rotate(300deg) translateX(-160px);
 }
 
 .menu-toggler:checked~ul .menu-item a {
     pointer-events: auto;
-    font-size: 20px;
+    font-size: 25px;
 }
 
 .menu-toggler+label {
@@ -108,9 +108,9 @@
 
 .menu-item a {
     display: block;
-    width: inherit;
-    height: inherit;
-    line-height: 80px;
+    width: 100px;
+    height: 100px;
+    line-height: 90px;
     color: rgba(255, 255, 255, 0.7);
     background: rgba(230, 230, 250, 0.7);
     border-radius: 50%;
@@ -124,6 +124,9 @@
 .menu-item a:hover {
     box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.3);
     color: white;
-    background: rgba(255, 255, 255, 0.3);
-    font-size: 44.44px
+    background: rgb(255, 255, 255);
+    font-size: 27px !important;
+    width:110px;
+    height: 110px;
+
 }
