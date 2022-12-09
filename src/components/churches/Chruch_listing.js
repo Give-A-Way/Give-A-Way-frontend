@@ -16,20 +16,7 @@ const ListChurches = (props) => {
   const [donateError, setDonateError] = useState("")
   return (
     <div>
-      {/* <h2>{props.title}</h2>
-      <img
-        width={343}
-        height={201}
-        src={props.churchImg}
-        alt={props.churchImg}
-      />
-      <p>
-        {" "}
-        <strong>Address:</strong> {props.address}
-      </p>
-      <p>
-        <strong>Status:</strong> {props.status}
-      </p> */}
+    
 
 
       <MDBCard style={{ width: "300px", height: "400px", margin: "10px 5px" }}>
