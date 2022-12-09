@@ -82,7 +82,7 @@ export default function SignUpPage() {
     return (
         <SignUpPageBody>
             <NavCircle routerLinks={isUserLogedIn ? [{ link: '../', name: "home" }, { link: '../church', name: "church" }, { link: '../about', name: "about" }] : [{ link: '../', name: "home" }, { link: '../church', name: "church" }, { link: '../about', name: "about" }, { link: '../login', name: "login" }, { link: '../signup', name: "signup" }]} />
-            <SignUpFormMessage>here{signUpFormMessage}</SignUpFormMessage>
+            <SignUpFormMessage>{signUpFormMessage}</SignUpFormMessage>
             {/* <SignUpForm onSubmit={getData}>
                 <label >UserName:</label>
                 <br />

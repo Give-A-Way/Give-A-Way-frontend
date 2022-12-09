@@ -1,6 +1,7 @@
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState, useContext, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import Context from "../../context/Context";
+import confetti from "https://cdn.skypack.dev/canvas-confetti@1";
 
 const Details = (props) => {
   const { setdoNate, doNate } = useContext(Context)
@@ -18,8 +19,14 @@ const Details = (props) => {
   const goToHomePage = () => {
     navigate('/church');
   } 
-
+  const rain = useCallback(() => {
+    confetti({
+      particleCount: 400,
+      spread: 200
+    });
+  }, []);
   const changeStatus = (e) => {
+    rain()
     e.preventDefault();
     //invokes the function to fetch to the backend
     changeData()

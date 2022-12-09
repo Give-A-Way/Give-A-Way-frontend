@@ -32,7 +32,7 @@ const ListChurches = (props) => {
       </p> */}
 
 
-      <MDBCard style={{ width: "300px", height: "400px", marginBottom: "10px" }}>
+      <MDBCard style={{ width: "300px", height: "400px", margin: "10px 5px" }}>
         <MDBCardImage style={{ width: "300px", height: "200px" }} src={props.churchImg} position='top' alt={props.churchImg} />
         <MDBCardBody>
           <MDBCardTitle>{props.title}</MDBCardTitle>
