@@ -4,12 +4,24 @@ import Context from "../../context/Context";
 import confetti from "https://cdn.skypack.dev/canvas-confetti@1";
 import style from "@emotion/styled"
 import "./form.scss"
+
+import * as React from 'react';
+import dayjs from 'dayjs';
+import TextField from '@mui/material/TextField';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { MobileDateTimePicker } from '@mui/x-date-pickers/MobileDateTimePicker';
+import Stack from '@mui/material/Stack';
+
 const ChurchComp = style.div`
     display: flex;
     flex-direction: column;
     align-items: center;
 `
 const Details = (props) => {
+  const [dateWithInitialValue, setDateWithInitialValue] = React.useState(
+    dayjs('2022-12-01T18:54'),
+  );
   const { setdoNate, doNate, userData } = useContext(Context);
   const [submissionData, SetsubmissionData] = useState(null);
   // fetch call to backend server
@@ -32,11 +44,11 @@ const Details = (props) => {
         redirect: "follow",
       };
 
-      fetch("localhost:3100/listings/church/1", requestOptions)
-        .then((response) => response.text())
-        .then((result) => console.log(result))
+      // fetch("localhost:3100/listings/church/1", requestOptions)
+      //   .then((response) => response.text())
+      //   .then((result) => console.log(result))
 
-        .catch((error) => console.log("error", error));
+      //   .catch((error) => console.log("error", error));
       // const data = await fetch("http://localhost:3100/listings/:id", {
       //   method: "PATCH",
       //   headers: { "Content-type": "application/json" },
@@ -63,13 +75,16 @@ const Details = (props) => {
     rain()
     e.preventDefault();
     SetsubmissionData({
-      time: e.target[0].value,
-      description: e.target[1].value,
+      type: e.target[1].value,
+      description: e.target[3].value,
+      time: dateWithInitialValue
     });
+    console.log(submissionData)
+    
     //invokes the function to fetch to the backend
 
     // updates the state and places the church donated to to the bottom of the page
-    setdoNate(doNate + 1);
+    // setdoNate(doNate + 1);
     // takes the user back to the hompage
     // goToHomePage();
   };
@@ -89,6 +104,22 @@ const Details = (props) => {
         <label for="start">Enter the Date:</label>
         <input type="submit" className="cd-input" value="Submit" />
       </form> */}
+      <LocalizationProvider dateAdapter={AdapterDayjs}>
+        <Stack spacing={3}>
+          <MobileDateTimePicker
+            value={dateWithInitialValue}
+            onChange={(newValue) => {
+              setDateWithInitialValue(newValue);
+            }}
+            label="With error handler"
+            onError={console.log}
+            minDate={dayjs('2022-01-01T00:00')}
+            inputFormat="YYYY/MM/DD hh:mm a"
+            mask="____/__/__ __:__ _M"
+            renderInput={(params) => <TextField {...params} />}
+          />
+        </Stack>
+      </LocalizationProvider>
       <form onSubmit={changeStatus} id="cd-form">
 
         {/* <fieldset>
@@ -104,21 +135,21 @@ const Details = (props) => {
           <input type="radio" id="radio3" className="cd-input" name="radios" />
           <label for="radio3">Radio 3</label>
         </fieldset> */}
-        <fieldset>
+        <fieldset> 
           <label for="select-choice">Type of Donation</label>
           <select className="cd-select" name="select-choice" id="select-choice">
-            <option value="Choice 1">- - select one - -</option>
-            <option value="Choice 2">Food</option>
-            <option value="Choice 3">Drinks</option>
-            <option value="Choice 4">Clothes</option>
-            <option value="Choice 5">Other</option>
-            <option value="Choice 6">Money</option>
+            <option key="donation-type-choice-1" value="Choice 1">- - select one - -</option>
+            <option key="donation-type-choice-2" value="Food">Food</option>
+            <option key="donation-type-choice-3" value="Drinks">Drinkss</option>
+            <option key="donation-type-choice-4" value="Clothes">Clothes</option>
+            <option key="donation-type-choice-6" value="Money">Money</option>
+            <option key="donation-type-choice-5" value="Other">Other</option>
           </select>
         </fieldset>
 
         <fieldset>
           <label for="textarea">Bio</label>
-          <textarea class="cd-textarea" name="textarea" id="textarea" placeholder="Tell us about yourself..."></textarea>
+          <textarea className="cd-textarea" name="textarea" id="textarea" placeholder="Tell us about yourself..."></textarea>
         </fieldset>
 
         {/* <fieldset>
@@ -130,10 +161,9 @@ const Details = (props) => {
           <input type="checkbox" id="check3" className="cd-input" name="checkboxes" />
           <label for="check3">Checkbox 3</label>
         </fieldset> */}
+       
 
-        
-
-        <input type="submit" value="Submit" id="button" className="cd-input"/>
+        <input type="submit" value="Submit" id="button" className="cd-input" />
       </form>
     </ChurchComp>
   );
