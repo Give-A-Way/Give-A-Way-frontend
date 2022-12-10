@@ -1,3 +1,33 @@
+#home-text{
+    position: absolute;
+    top: -500px;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+    transition: 2s;
+}
+@media (min-width: 0px) {
+    #home-text {
+        transform: scale(.8);
+    }
+}
+
+@media (min-width: 480px) {
+    #home-text {
+        transform: scale(1.2);
+    }
+}
+@media (min-width: 590px) {
+    #home-text {
+        transform: scale(1.5);
+    }
+}
+@media (min-width: 780px) {
+    #home-text {
+        transform: scale(2);
+    }
+}
 .menu-toggler {
     position: absolute;
     display: block;
@@ -22,19 +52,19 @@
 }
 
 .menu-toggler:checked~ul .menu-item:nth-child(1) {
-    transform: rotate(0deg) translate(-160px);
+    transform: rotate(2.7deg) translate(-160px);
 }
 
 .menu-toggler:checked~ul .menu-item:nth-child(2) {
-    transform: rotate(60deg) translateX(-160px);
+    transform: rotate(64deg) translateX(-160px);
 }
 
 .menu-toggler:checked~ul .menu-item:nth-child(3) {
-    transform: rotate(120deg) translateX(-160px);
+    transform: rotate(124deg) translateX(-160px);
 }
 
 .menu-toggler:checked~ul .menu-item:nth-child(4) {
-    transform: rotate(180deg) translateX(-160px);
+    transform: rotate(185deg) translateX(-160px);
 }
 
 .menu-toggler:checked~ul .menu-item:nth-child(5) {
@@ -51,13 +81,13 @@
 }
 
 .menu-toggler+label {
-    width: 120px;
+    width: 220px;
     height: 60px;
     display: block;
     z-index: 1;
     border-radius: 2.5px;
-    font-size: 50px;
-    
+    font-size: 35px;
+    text-align: center;
     transition: transform 0.5s top 0.5s;
     position: absolute;
     display: block;
@@ -69,19 +99,19 @@
 }
 
 .menu-item:nth-child(1) a {
-    transform: rotate(0deg);
+    transform: rotate(-2.7deg);
 }
 
 .menu-item:nth-child(2) a {
-    transform: rotate(-60deg);
+    transform: rotate(-64deg);
 }
 
 .menu-item:nth-child(3) a {
-    transform: rotate(-120deg);
+    transform: rotate(-124deg);
 }
 
 .menu-item:nth-child(4) a {
-    transform: rotate(-180deg);
+    transform: rotate(-185deg);
 }
 
 .menu-item:nth-child(5) a {

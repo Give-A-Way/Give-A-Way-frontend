@@ -21,7 +21,6 @@ export default function Church() {
     isPaneOpen: false,
     isPaneOpenLeft: false,
   });
-  console.log(churchData)
   const listOfChurches = churchData.map((churches, i) => {
     return (
       <ListChurches
@@ -41,24 +40,23 @@ export default function Church() {
       <NavCircle
         style={{ position: "absolute", top: "10px" }}
       />
-      <h1 style={{textAlign: "center" } }>Church Donation page</h1>
+      <h1 style={{ textAlign: "center" }}>Church Donation page</h1>
       <div style={{
         marginTop: "50px",
         marginRight: "32px",
         display: "flex",
         justifyContent: "flex-end"
-
       }}>
 
-        <button onClick={() => setState({ isPaneOpen: true })}>
+        {isUserLogedIn ? <button onClick={() => setState({ isPaneOpen: true })}>
           Past donations
-        </button>
+        </button>:""}
       </div>
       <SlidingPane
         className="some-custom-class"
         overlayClassName="some-custom-overlay-class"
         isOpen={state.isPaneOpen}
-        title="Time Stamp?"
+        title="My commitments"
         from="right"
         width="400px"
         subtitle="Give-A-Way"

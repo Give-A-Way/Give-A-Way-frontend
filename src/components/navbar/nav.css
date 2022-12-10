@@ -12,7 +12,7 @@
 .menu-page {
     position: absolute;
     top: 20%;
-    left: 50%;
+    left: 75%;
 }
 
 .menu-page a {
@@ -28,34 +28,52 @@
         visibility 0.2s linear;
 }
 
+.nav-background {
+    background-color: #FF8787;
+    width: 10px;
+    height: 10px;
+    position: relative;
+    left: 40px;
+    top: 45px;
+    border-radius: 50%;
+    transition: 1s;
+    z-index: 0;
+}
+
 .menu-open-page:checked~.menu-page a {
     visibility: visible;
     opacity: 1;
+    text-decoration: none;
 }
 
 .menu-open-page:checked~.menu-page a:nth-child(1) {
     left: calc(50% - 10px);
     top: -12.5px;
+    transform: scale(1.4);
 }
 
 .menu-open-page:checked~.menu-page a:nth-child(2) {
     left: calc(50% - 35px);
-    top: -5px;
+    top: 0px;
+    transform: scale(1.4);
 }
 
 .menu-open-page:checked~.menu-page a:nth-child(3) {
     left: calc(50% - 45px);
-    top: 25px;
+    top: 30px;
+    transform: scale(1.4);
 }
 
 .menu-open-page:checked~.menu-page a:nth-child(4) {
     left: calc(50% - 40px);
-    top: 55px;
+    top: 60px;
+    transform: scale(1.4);
 }
 
 .menu-open-page:checked~.menu-page a:nth-child(5) {
     left: calc(50% - 10px);
-    top: 65px;
+    top: 80px;
+    transform: scale(1.4);
 }
 
 /* Checkbox */
@@ -64,6 +82,7 @@
 }
 
 .menu-button-page {
+    transition: 0.5s;
     width: 50px;
     height: 50px;
     margin: auto;
@@ -77,15 +96,27 @@
     z-index: 2;
     cursor: pointer;
     background: #E5EBB2;
-    border: 1px solid #BCE29E;
+    border: 1px solid #E5EBB2;
     box-shadow: 0px 3px 0px 1px #E5EBB2,
-        inset 0px 2px 8px 5px #BCE29E;
+        inset 0px 2px 8px 5px #E5EBB2;
     border-radius: 50px;
 }
 
 .menu-button-page:hover {
+    background: #9bdb6b;
+    transform:scale(1.3)
+}
+.menu-open-page:checked ~ .menu-button-page {
+    transform: scale(1.3) translateX(20px) translateY(5px);
+}
+.menu-open-page:checked~ .menu-button-page:hover{
     background: #FF8787;
 }
+
+.menu-open-page:checked~.nav-background {
+    transform: scale(12) translateX(-1px) translateY(0px);
+}
+
 .menu-open-page:checked~.menu-page a:nth-child(1):hover {
     color: #91d25f;
 }
@@ -105,14 +136,5 @@
 .menu-open-page:checked~.menu-page a:nth-child(5):hover {
     color: #91d25f;
 
-}
-.nav-background {
-    background-color: #FF8787;
-    width: 100px;
-    height: 100px;
-    position: relative;
-    left: -30px;
-    top: -5px;
-    border-radius: 50%;
 }
 
