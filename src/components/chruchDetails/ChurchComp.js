@@ -2,7 +2,7 @@ import { useEffect, useState, useContext, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import Context from "../../context/Context";
 import confetti from "https://cdn.skypack.dev/canvas-confetti@1";
-import style from "@emotion/styled"
+import styled from "@emotion/styled"
 import "./form.scss"
 
 import * as React from 'react';
@@ -13,14 +13,17 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { MobileDateTimePicker } from '@mui/x-date-pickers/MobileDateTimePicker';
 import Stack from '@mui/material/Stack';
 
-const ChurchComp = style.div`
+const ChurchComp = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
 `
+const FormHolder = styled.div`
+  margin: 40px 0 0 0
+`;
 const Details = (props) => {
   const [dateWithInitialValue, setDateWithInitialValue] = React.useState(
-    dayjs('2022-12-01T18:54'),
+    dayjs(new Date()),
   );
   const { setdoNate, doNate, userData } = useContext(Context);
   const [submissionData, SetsubmissionData] = useState(null);
@@ -80,7 +83,7 @@ const Details = (props) => {
       time: dateWithInitialValue
     });
     console.log(submissionData)
-    
+
     //invokes the function to fetch to the backend
 
     // updates the state and places the church donated to to the bottom of the page
@@ -104,29 +107,31 @@ const Details = (props) => {
         <label for="start">Enter the Date:</label>
         <input type="submit" className="cd-input" value="Submit" />
       </form> */}
-      <LocalizationProvider dateAdapter={AdapterDayjs}>
-        <Stack spacing={3}>
-          <MobileDateTimePicker
-            value={dateWithInitialValue}
-            onChange={(newValue) => {
-              setDateWithInitialValue(newValue);
-            }}
-            label="With error handler"
-            onError={console.log}
-            minDate={dayjs('2022-01-01T00:00')}
-            inputFormat="YYYY/MM/DD hh:mm a"
-            mask="____/__/__ __:__ _M"
-            renderInput={(params) => <TextField {...params} />}
-          />
-        </Stack>
-      </LocalizationProvider>
-      <form onSubmit={changeStatus} id="cd-form">
+      <FormHolder>
+        <LocalizationProvider dateAdapter={AdapterDayjs}>
+          <Stack spacing={3}>
+            <MobileDateTimePicker
+              className="here-i-am"
+              value={dateWithInitialValue}
+              onChange={(newValue) => {
+                setDateWithInitialValue(newValue);
+              }}
+              label="select date of donation"
+              onError={console.log}
+              minDate={dayjs(new Date())}
+              inputFormat="YYYY/MM/DD hh:mm a"
+              mask="____/__/__ __:__ _M"
+              renderInput={(params) => <TextField {...params} />}
+            />
+          </Stack>
+        </LocalizationProvider>
+        <form onSubmit={changeStatus} id="cd-form">
 
-        {/* <fieldset>
+          {/* <fieldset>
           <label for="firstName">Full name</label>
           <input type="text" name="name" id="firstName" className="cd-input" placeholder="Optimus Prime" />
         </fieldset> */}
-        {/* <fieldset>
+          {/* <fieldset>
           <legend>Type of Donation</legend>
           <input type="radio" id="radio1" className="cd-input" name="radios" checked />
           <label for="radio1">Radio 1</label><br />
@@ -135,24 +140,24 @@ const Details = (props) => {
           <input type="radio" id="radio3" className="cd-input" name="radios" />
           <label for="radio3">Radio 3</label>
         </fieldset> */}
-        <fieldset> 
-          <label for="select-choice">Type of Donation</label>
-          <select className="cd-select" name="select-choice" id="select-choice">
-            <option key="donation-type-choice-1" value="Choice 1">- - select one - -</option>
-            <option key="donation-type-choice-2" value="Food">Food</option>
-            <option key="donation-type-choice-3" value="Drinks">Drinkss</option>
-            <option key="donation-type-choice-4" value="Clothes">Clothes</option>
-            <option key="donation-type-choice-6" value="Money">Money</option>
-            <option key="donation-type-choice-5" value="Other">Other</option>
-          </select>
-        </fieldset>
+          <fieldset>
+            <label htmlFor="select-choice">Type of Donation</label>
+            <select className="cd-select" name="select-choice" id="select-choice">
+              <option key="donation-type-choice-1" value="Choice 1">- - select one - -</option>
+              <option key="donation-type-choice-2" value="Food">Food</option>
+              <option key="donation-type-choice-3" value="Drinks">Drinkss</option>
+              <option key="donation-type-choice-4" value="Clothes">Clothes</option>
+              <option key="donation-type-choice-6" value="Money">Money</option>
+              <option key="donation-type-choice-5" value="Other">Other</option>
+            </select>
+          </fieldset>
 
-        <fieldset>
-          <label for="textarea">Bio</label>
-          <textarea className="cd-textarea" name="textarea" id="textarea" placeholder="Tell us about yourself..."></textarea>
-        </fieldset>
+          <fieldset>
+            <label htmlFor="textarea">Bio</label>
+            <textarea className="cd-textarea" name="textarea" id="textarea" placeholder="Tell us about yourself..."></textarea>
+          </fieldset>
 
-        {/* <fieldset>
+          {/* <fieldset>
           <legend>Group 1</legend>
           <input type="checkbox" id="check1" className="cd-input" name="checkboxes" checked />
           <label for="check1">Checkbox 1</label><br />
@@ -161,10 +166,11 @@ const Details = (props) => {
           <input type="checkbox" id="check3" className="cd-input" name="checkboxes" />
           <label for="check3">Checkbox 3</label>
         </fieldset> */}
-       
 
-        <input type="submit" value="Submit" id="button" className="cd-input" />
-      </form>
+
+          <input type="submit" value="Submit" id="button" className="cd-input" />
+        </form>
+      </FormHolder>
     </ChurchComp>
   );
 };

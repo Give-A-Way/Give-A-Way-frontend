@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import { useEffect, useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import Context from "../../context/Context";
 import NavCircle from "../navbar";
 
@@ -161,7 +161,7 @@ export default function SignUpPage() {
                             </button>
                         </div>
                         <p className="forgot-password text-right">
-                            Already registered <a href="/login">sign in?</a>
+                            Already registered <Link to="/login">sign in?</Link>
                         </p>
                     </form>
                 </div>

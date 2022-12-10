@@ -12,7 +12,7 @@ export default function NavCircle(props) {
         navigate(link);
     }
     let navLinkist = [{ link: '../', logo: "icon fa fa-home" }, { link: '../church', logo: "fa fa-university" }, { link: '../about', logo: "fa fa-info-circle" }].map((val, i) => {
-        return <a class={val.logo} onClick={() => { goToHomePage(val.link) }}>{val.name}</a>
+        return <a key={`navlink${i}`} className={val.logo} onClick={() => { goToHomePage(val.link) }}>{val.name}</a>
     })
     const userSignOut = () => {
         setIsUserLogedIn(false)
@@ -20,29 +20,33 @@ export default function NavCircle(props) {
     }
     let signOutLogo = [
         <a
-            class="fa fa-sign-in"
+            key="fa-sign-in"
+            className="fa fa-sign-in"
             onClick={() => {
                 goToHomePage("../login")
             }}
         ></a>,
         <a
-            class="fa fa-user-plus"
+            key="fa-sign-oup"
+            className="fa fa-user-plus"
             onClick={() => {
                 goToHomePage("../signup")
             }}
         ></a>
     ]
     return (
-        <div class="center-menu-page">
-            <div style={{display:navBackground}} class="nav-background"></div>
-            <label class="menu-button-page" for="menu-open" aria-hidden="true">Menu</label>
-            <input class="menu-open-page" id="menu-open" type="checkbox" aria-hidden="true" onClick={() => {
+        <div className="center-menu-page">
+        
+            <input className="menu-open-page" id="menu-open" type="checkbox" aria-hidden="true" onClick={() => {
                 setNavBackground(navBackground === "none"?"block":"none")
             }}/>
-            <nav class="menu-page" role="navigation">
+            <label className="menu-button-page" htmlFor="menu-open" aria-hidden="true">Menu</label>
+            <div className="nav-background"></div>
+            <nav className="menu-page" role="navigation">
                 {navLinkist}
                 {isUserLogedIn ? <a
-                    class="fa fa-sign-out"
+                    key="fa-sign-out"
+                    className="fa fa-sign-out"
                     onClick={() => {
                         userSignOut()
                         goToHomePage("../")

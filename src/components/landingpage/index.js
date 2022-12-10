@@ -25,14 +25,38 @@ function NavCircle(props) {
   return (
     <div>
       <nav className="menu">
+        <svg id="home-text" width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+          <g>
+            <title>background</title>
+            <rect style={{ fill: "none" }} id="canvas_background" height="402" width="400" y="-1" x="-1" />
+            <g display="none" overflow="visible" y="0" x="0" height="100%" width="100%" id="canvasGrid">
+              <rect fill="url(#gridpattern)" stroke-width="0" y="0" x="0" height="100%" width="100%" />
+            </g>
+          </g>
+          <g>
+            <title>cool</title>
+            <path id="cool" style={{ fill: "none" }} d="M 17 200 Q 202 94 380 195 " />
+          </g>
+          <text width="400">
+            <textPath
+              href="#cool"
+              style={{
+                fontSize: "31px",
+                fontFamily: `'Fredoka One',cursive`,
+                fill: "red"
+              }}>
+              Whelcome to Give-A-Way
+            </textPath>
+          </text>
+        </svg>
         <input className="menu-toggler" type="checkbox" />
-        <label >Menu</label>
+        <label id="main-nav-text">Start Here</label>
         <ul>
           {navLinkist}
           {isUserLogedIn ? <li className="menu-item" key={`signOuthere`}><a onClick={() => {
             userSignOut()
             goToHomePage("./")
-          }}>Sign Out</a></li >:""}
+          }}>Sign Out</a></li > : ""}
         </ul>
       </nav>
     </div >
