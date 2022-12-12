@@ -13,16 +13,38 @@ import Aboutpage from "./components/aboutpage";
 const AppBodyHere = styled.div`
 `;
 function App() {
-  const { setChurchData, doNate } = useContext(Context)
+  const { setChurchData, doNate, isUserLogedIn, userData, setUserDonationsPledge } = useContext(Context)
 
   useEffect(() => {
+    async function getUserData() {
+      let myHeaders = new Headers();
+      myHeaders.append("Content-Type", "application/json");
+
+      let raw = JSON.stringify({
+        "user_id": 1
+      });
+
+      let requestOptions = {
+        method: 'GET',
+        headers: myHeaders,
+        body: raw,
+        redirect: 'follow'
+      };
+
+      let getUserDonationsPledge = await fetch(`http://localhost:3100/listings/user_id/${userData.id}`).then(response => response.json())
+      setUserDonationsPledge(getUserDonationsPledge)
+      console.log(getUserDonationsPledge)
+    }
     async function getData() {
       let getChurchData = await fetch("http://localhost:3100/listings").then(response => response.json())
       setChurchData(getChurchData)
     }
     console.log("hi")
     getData()
-  }, [setChurchData, doNate])
+    if (isUserLogedIn) { 
+      getUserData()
+    }
+  }, [setChurchData, doNate, isUserLogedIn])
   return (
     <AppBodyHere>
       <Routes>

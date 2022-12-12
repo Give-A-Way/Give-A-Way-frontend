@@ -7,6 +7,7 @@ import SlidingPane from "react-sliding-pane";
 import "react-sliding-pane/dist/react-sliding-pane.css";
 import React, { Component, useState } from "react";
 import { render } from "react-dom";
+import SlidingPaneItem from "./userDonations";
 
 const ChurchesDiv = styled.div`
    display: flex;
@@ -14,13 +15,25 @@ const ChurchesDiv = styled.div`
     justify-content: space-evenly;
     padding: 0 80px;
 `
-
+const SlidePanelHeader = styled.p`
+  background-color: silver;
+  margin: 0 0 30px;
+`
 export default function Church() {
-  const { churchData, isUserLogedIn } = useContext(Context);
+  const { churchData, isUserLogedIn, userDonationsPledge} = useContext(Context);
   const [state, setState] = useState({
     isPaneOpen: false,
     isPaneOpenLeft: false,
   });
+  
+    const listOfChurchesDonatedTO = userDonationsPledge?.map((val) => {
+      return <SlidingPaneItem
+        date={val.schedule_time}
+        type={val.item_description}
+        cName={val.church_name}
+        cLocation={val.location}
+      />
+    })
   const listOfChurches = churchData.map((churches, i) => {
     return (
       <ListChurches
@@ -65,9 +78,8 @@ export default function Church() {
           setState({ isPaneOpen: false });
         }}
       >
-        <div>And I am pane content. BTW, what rocks?</div>
-        <br />
-        <img src="img.png" />
+        <SlidePanelHeader>Up coming donations</SlidePanelHeader>
+        {listOfChurchesDonatedTO}
       </SlidingPane>
       <ChurchesDiv>{listOfChurches}</ChurchesDiv>
 
