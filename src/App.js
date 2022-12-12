@@ -29,7 +29,8 @@ function App() {
     if (isUserLogedIn) { 
       getUserData()
     }
-  }, [setChurchData, doNate, isUserLogedIn])
+    
+  }, [setChurchData, doNate, isUserLogedIn, isUserLogedIn])
   return (
     <AppBodyHere>
       <Routes>

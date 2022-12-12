@@ -34,21 +34,23 @@ export default function Church() {
     isPaneOpen: false,
     isPaneOpenLeft: false,
   });
-  const [listOfChurchesDonatedTO, setListOfChurchesDonatedTO] = useState(null)
+  const [listOfChurchesDonatedTO, setListOfChurchesDonatedTO] = useState("")
   useEffect(() => {
-    setListOfChurchesDonatedTO(
-      // userDonationsPledge ? userDonationsPledge.map((val,i) => {
-      //   return <SlidingPaneItem
-      //     key={`donationKey${i}`}
-      //     date={val.schedule_time}
-      //     type={val.item_description}
-      //     cName={val.church_name}
-      //     cLocation={val.location}
-      //     DId={val.donation_id}
-      //   />
-      // }): null
-    )
-  }, [userDonationsPledge, doNate, churchData])
+    if (isUserLogedIn) {
+      setListOfChurchesDonatedTO(
+        userDonationsPledge.map((val, i) => {
+          return <SlidingPaneItem
+            key={`donationKey${i}`}
+            date={val.schedule_time}
+            type={val.item_description}
+            cName={val.church_name}
+            cLocation={val.location}
+            DId={val.donation_id}
+          />
+        })
+      )
+    }
+  }, [userDonationsPledge, doNate, churchData, isUserLogedIn])
 
   const listOfChurches = churchData.map((churches, i) => {
     return (
@@ -95,18 +97,7 @@ export default function Church() {
         }}
       >
         <SlidePanelHeader>Up coming donations</SlidePanelHeader>
-        {
-          userDonationsPledge?.map((val, i) => {
-            return <SlidingPaneItem
-              key={`donationKey${val.donation_id}`}
-              date={val.schedule_time}
-              type={val.item_description}
-              cName={val.church_name}
-              cLocation={val.location}
-              DId={val.donation_id}
-            />
-          })
-      }
+        {listOfChurchesDonatedTO}
       </SlidingPane>
       <ChurchesDiv>{listOfChurches}</ChurchesDiv>
 

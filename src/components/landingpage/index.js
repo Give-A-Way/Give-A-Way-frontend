@@ -43,9 +43,9 @@ function NavCircle(props) {
               style={{
                 fontSize: "31px",
                 fontFamily: `'Fredoka One',cursive`,
-                fill: "blue"
+                fill: "black"
               }}>
-              Whelcome to Give-A-Way
+              Welcome to Give-A-Way
             </textPath>
           </text>
         </svg>
