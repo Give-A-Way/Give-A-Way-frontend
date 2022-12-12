@@ -1,7 +1,7 @@
 import ListChurches from "./Chruch_listing";
 import styled from "@emotion/styled";
 import NavCircle from "../navbar";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import Context from "../../context/Context";
 import SlidingPane from "react-sliding-pane";
 import "react-sliding-pane/dist/react-sliding-pane.css";
@@ -19,21 +19,37 @@ const SlidePanelHeader = styled.p`
   background-color: silver;
   margin: 0 0 30px;
 `
+const SlideButton = styled.button`
+  border-radius: 20px;
+  position: relative;
+  top: -40px;
+  transition: 3s;
+  &:hover{
+    transform: scale(1.1);
+  }
+`;
 export default function Church() {
-  const { churchData, isUserLogedIn, userDonationsPledge} = useContext(Context);
+  const { churchData, isUserLogedIn, userDonationsPledge, doNate } = useContext(Context);
   const [state, setState] = useState({
     isPaneOpen: false,
     isPaneOpenLeft: false,
   });
-  
-    const listOfChurchesDonatedTO = userDonationsPledge?.map((val) => {
-      return <SlidingPaneItem
-        date={val.schedule_time}
-        type={val.item_description}
-        cName={val.church_name}
-        cLocation={val.location}
-      />
-    })
+  const [listOfChurchesDonatedTO, setListOfChurchesDonatedTO] = useState(null)
+  useEffect(() => {
+    setListOfChurchesDonatedTO(
+      // userDonationsPledge ? userDonationsPledge.map((val,i) => {
+      //   return <SlidingPaneItem
+      //     key={`donationKey${i}`}
+      //     date={val.schedule_time}
+      //     type={val.item_description}
+      //     cName={val.church_name}
+      //     cLocation={val.location}
+      //     DId={val.donation_id}
+      //   />
+      // }): null
+    )
+  }, [userDonationsPledge, doNate, churchData])
+
   const listOfChurches = churchData.map((churches, i) => {
     return (
       <ListChurches
@@ -61,9 +77,9 @@ export default function Church() {
         justifyContent: "flex-end"
       }}>
 
-        {isUserLogedIn ? <button onClick={() => setState({ isPaneOpen: true })}>
-          Past donations
-        </button>:""}
+        {isUserLogedIn ? <SlideButton onClick={() => setState({ isPaneOpen: true })}>
+          Donations pledge
+        </SlideButton> : ""}
       </div>
       <SlidingPane
         className="some-custom-class"
@@ -79,7 +95,18 @@ export default function Church() {
         }}
       >
         <SlidePanelHeader>Up coming donations</SlidePanelHeader>
-        {listOfChurchesDonatedTO}
+        {
+          userDonationsPledge?.map((val, i) => {
+            return <SlidingPaneItem
+              key={`donationKey${val.donation_id}`}
+              date={val.schedule_time}
+              type={val.item_description}
+              cName={val.church_name}
+              cLocation={val.location}
+              DId={val.donation_id}
+            />
+          })
+      }
       </SlidingPane>
       <ChurchesDiv>{listOfChurches}</ChurchesDiv>
 

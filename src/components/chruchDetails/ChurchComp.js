@@ -32,6 +32,7 @@ const Details = (props) => {
   // fetch call to backend server
   useEffect(() => {
     setMinDayToDonate(`${cuurentDate.getFullYear()}-${cuurentDate.getMonth() + 1}-${cuurentDate.getDate()}T${cuurentDate.getUTCHours() + 19}:${cuurentDate.getMinutes()}`)
+
     async function changeData() {
       let myHeaders = new Headers();
       myHeaders.append("Content-Type", "application/json");
@@ -50,7 +51,8 @@ const Details = (props) => {
         redirect: 'follow'
       };
 
-      fetch("http://localhost:3100/listings", requestOptions)
+      await fetch("http://localhost:3100/listings", requestOptions)
+      setdoNate(doNate + 1);
     }
 
     if (submissionData) {
@@ -73,19 +75,16 @@ const Details = (props) => {
   const changeStatus = (e) => {
     rain()
     e.preventDefault();
-    // console.log()
     SetsubmissionData({
       type: e.target[1].value,
       description: e.target[3].value,
       time: dateWithInitialValue
     });
     rain()
-    console.log(submissionData)
 
     //invokes the function to fetch to the backend
 
     // updates the state and places the church donated to to the bottom of the page
-    setdoNate(doNate + 1);
     // takes the user back to the hompage
     // goToHomePage();
   };
