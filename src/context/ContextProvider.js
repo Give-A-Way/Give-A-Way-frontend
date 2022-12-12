@@ -5,6 +5,7 @@ function ContextProvider({ children }) {
     const [isUserLogedIn, setIsUserLogedIn] = useState(false)
     const [churchData, setChurchData] = useState([])
     const [userData, setUserData] = useState(null)
+    const [userDonationsPledge,setUserDonationsPledge] = useState(null)
     const [doNate, setdoNate] = useState(0)
     const state = {
         isUserLogedIn,
@@ -14,7 +15,9 @@ function ContextProvider({ children }) {
         setChurchData,
         setUserData,
         doNate,
-        setdoNate
+        setdoNate,
+        userDonationsPledge,
+        setUserDonationsPledge
     }
     return (
         <Context.Provider value={state}>

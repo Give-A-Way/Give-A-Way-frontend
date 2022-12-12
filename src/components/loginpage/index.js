@@ -33,7 +33,6 @@ export default function Loginpage() {
 
             let getUserData = await fetch("http://localhost:3100/authentication/login", requestOptions)
                 .then(response => response.json())
-            // console.log(getUserData)
             if (getUserData.message) {
                 console.log(getUserData.message)
             } else {

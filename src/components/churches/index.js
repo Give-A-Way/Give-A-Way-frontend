@@ -1,12 +1,13 @@
 import ListChurches from "./Chruch_listing";
 import styled from "@emotion/styled";
 import NavCircle from "../navbar";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import Context from "../../context/Context";
 import SlidingPane from "react-sliding-pane";
 import "react-sliding-pane/dist/react-sliding-pane.css";
 import React, { Component, useState } from "react";
 import { render } from "react-dom";
+import SlidingPaneItem from "./userDonations";
 
 const ChurchesDiv = styled.div`
    display: flex;
@@ -14,13 +15,43 @@ const ChurchesDiv = styled.div`
     justify-content: space-evenly;
     padding: 0 80px;
 `
-
+const SlidePanelHeader = styled.p`
+  background-color: silver;
+  margin: 0 0 30px;
+`
+const SlideButton = styled.button`
+  border-radius: 20px;
+  position: relative;
+  top: -40px;
+  transition: 3s;
+  &:hover{
+    transform: scale(1.1);
+  }
+`;
 export default function Church() {
-  const { churchData, isUserLogedIn } = useContext(Context);
+  const { churchData, isUserLogedIn, userDonationsPledge, doNate } = useContext(Context);
   const [state, setState] = useState({
     isPaneOpen: false,
     isPaneOpenLeft: false,
   });
+  const [listOfChurchesDonatedTO, setListOfChurchesDonatedTO] = useState("")
+  useEffect(() => {
+    if (isUserLogedIn) {
+      setListOfChurchesDonatedTO(
+        userDonationsPledge.map((val, i) => {
+          return <SlidingPaneItem
+            key={`donationKey${i}`}
+            date={val.schedule_time}
+            type={val.item_description}
+            cName={val.church_name}
+            cLocation={val.location}
+            DId={val.donation_id}
+          />
+        })
+      )
+    }
+  }, [userDonationsPledge, doNate, churchData, isUserLogedIn])
+
   const listOfChurches = churchData.map((churches, i) => {
     return (
       <ListChurches
@@ -48,9 +79,9 @@ export default function Church() {
         justifyContent: "flex-end"
       }}>
 
-        {isUserLogedIn ? <button onClick={() => setState({ isPaneOpen: true })}>
-          Past donations
-        </button>:""}
+        {isUserLogedIn ? <SlideButton onClick={() => setState({ isPaneOpen: true })}>
+          Donations pledge
+        </SlideButton> : ""}
       </div>
       <SlidingPane
         className="some-custom-class"
@@ -65,9 +96,8 @@ export default function Church() {
           setState({ isPaneOpen: false });
         }}
       >
-        <div>And I am pane content. BTW, what rocks?</div>
-        <br />
-        <img src="img.png" />
+        <SlidePanelHeader>Up coming donations</SlidePanelHeader>
+        {listOfChurchesDonatedTO}
       </SlidingPane>
       <ChurchesDiv>{listOfChurches}</ChurchesDiv>
 

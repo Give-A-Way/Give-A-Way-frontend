@@ -25,55 +25,53 @@ const Details = (props) => {
   const [dateWithInitialValue, setDateWithInitialValue] = React.useState(
     dayjs(new Date()),
   );
+  const [minDayToDonate, setMinDayToDonate] = useState(null)
   const { setdoNate, doNate, userData } = useContext(Context);
   const [submissionData, SetsubmissionData] = useState(null);
+  let cuurentDate = new Date()
   // fetch call to backend server
   useEffect(() => {
+    setMinDayToDonate(`${cuurentDate.getFullYear()}-${cuurentDate.getMonth() + 1}-${cuurentDate.getDate()}T${cuurentDate.getUTCHours() + 19}:${cuurentDate.getMinutes()}`)
+
     async function changeData() {
       let myHeaders = new Headers();
       myHeaders.append("Content-Type", "application/json");
 
       let raw = JSON.stringify({
-        id: props.id,
-        user_id: userData.id,
-        itemDescription: submissionData.description,
-        time: submissionData.time,
+        "id": props.id,
+        "user_id": userData.id,
+        "itemDescription": submissionData.description,
+        "time": submissionData.time
       });
 
       let requestOptions = {
-        method: "PATCH",
+        method: 'PATCH',
         headers: myHeaders,
         body: raw,
-        redirect: "follow",
+        redirect: 'follow'
       };
 
-      // fetch("localhost:3100/listings/church/1", requestOptions)
-      //   .then((response) => response.text())
-      //   .then((result) => console.log(result))
-
-      //   .catch((error) => console.log("error", error));
-      // const data = await fetch("http://localhost:3100/listings/:id", {
-      //   method: "PATCH",
-      //   headers: { "Content-type": "application/json" },
-      //   body: JSON.stringify({ id: props.id })
-      // }
-      // ).then(response => response.json())
+      await fetch("http://localhost:3100/listings", requestOptions)
+      setdoNate(doNate + 1);
     }
 
     if (submissionData) {
       changeData();
     }
   }, [submissionData]);
+
   const navigate = useNavigate();
   const goToHomePage = () => {
     navigate('/church');
   }
+
   const rain = useCallback(() => {
     confetti({
       particleCount: 400,
       spread: 200
     });
   }, []);
+
   const changeStatus = (e) => {
     rain()
     e.preventDefault();
@@ -82,26 +80,25 @@ const Details = (props) => {
       description: e.target[3].value,
       time: dateWithInitialValue
     });
-    console.log(submissionData)
+    rain()
 
     //invokes the function to fetch to the backend
 
     // updates the state and places the church donated to to the bottom of the page
-    // setdoNate(doNate + 1);
     // takes the user back to the hompage
     // goToHomePage();
   };
 
   return (
     <ChurchComp>
-      <h2>{props.title}</h2>
+      <h2 id="title">{props.title}</h2>
       <img
         width={343}
         height={201}
         src={props.churchImg}
         alt={props.churchImg}
       />
-      <h4>{props.location}</h4>
+      <h4 id="church-location">{props.location}</h4>
       {/* <textarea class="textarea" placeholder="What would you like to donate?"></textarea> */}
       {/* <form onSubmit={changeStatus}>
         <label for="start">Enter the Date:</label>
@@ -118,7 +115,7 @@ const Details = (props) => {
               }}
               label="select date of donation"
               onError={console.log}
-              minDate={dayjs(new Date())}
+              minDate={dayjs(minDayToDonate)}
               inputFormat="YYYY/MM/DD hh:mm a"
               mask="____/__/__ __:__ _M"
               renderInput={(params) => <TextField {...params} />}
@@ -153,8 +150,8 @@ const Details = (props) => {
           </fieldset>
 
           <fieldset>
-            <label htmlFor="textarea">Bio</label>
-            <textarea className="cd-textarea" name="textarea" id="textarea" placeholder="Tell us about yourself..."></textarea>
+            <label htmlFor="textarea">Description of Donation</label>
+            <textarea className="cd-textarea" name="textarea" id="textarea" placeholder="Description of Donation..."></textarea>
           </fieldset>
 
           {/* <fieldset>
