@@ -39,11 +39,11 @@ function NavCircle(props) {
           </g>
           <text width="400">
             <textPath
+              id="home-header"
               href="#cool"
               style={{
                 fontSize: "31px",
-                fontFamily: `'Fredoka One',cursive`,
-                fill: "black"
+                fontFamily: `'Fredoka One',cursive`
               }}>
               Welcome to Give-A-Way
             </textPath>

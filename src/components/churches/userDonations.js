@@ -50,6 +50,9 @@ export default function SlidingPaneItem(props) {
         }
         if (clickedCheck) {
             upDateStatusOfDonation()
+            setTimeout(() => {
+                setHeightOFdiv("none")
+            }, 2000)
         }
     }, [clickedCheck])
     return (
@@ -65,9 +68,7 @@ export default function SlidingPaneItem(props) {
                     setDisplayItem("scale(0)")
                     sethover(false)
                     setClickedCheck(true)
-                    setTimeout(() => {
-                        setHeightOFdiv("none")
-                    }, 2000)
+                    
                 }} />
             </CheckboxHolder>
         </ItemHolder>

@@ -38,7 +38,8 @@ export default function Church() {
   useEffect(() => {
     if (isUserLogedIn) {
       setListOfChurchesDonatedTO(
-        userDonationsPledge.map((val, i) => {
+        userDonationsPledge?.map((val, i) => {
+          console.log(val)
           return <SlidingPaneItem
             key={`donationKey${i}`}
             date={val.schedule_time}
