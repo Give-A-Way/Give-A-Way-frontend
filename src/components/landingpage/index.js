@@ -35,15 +35,17 @@ function NavCircle(props) {
           </g>
           <g>
             <title>cool</title>
-            <path id="cool" style={{ fill: "none" }} d="M 17 200 Q 202 94 380 195 " />
+            <path id="cool" style={{ fill: "none" }} d="M 30 200 A 43 160 270 1 1 352 200 " />
           </g>
           <text width="400">
             <textPath
               id="home-header"
               href="#cool"
               style={{
-                fontSize: "31px",
-                fontFamily: `'Fredoka One',cursive`
+                fontSize: "27px",
+                fontFamily: `'Aclonica', sans-serif`,
+                textAlign: "center"
+
               }}>
               Welcome to Give-A-Way
             </textPath>
