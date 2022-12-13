@@ -14,6 +14,8 @@ const ChurchesDiv = styled.div`
     flex-wrap: wrap;
     justify-content: space-evenly;
     padding: 0 80px;
+    width: 90%;
+    margin: 0 auto
 `
 const SlidePanelHeader = styled.p`
   background-color: silver;
@@ -36,7 +38,7 @@ export default function Church() {
   });
   const [listOfChurchesDonatedTO, setListOfChurchesDonatedTO] = useState("")
   useEffect(() => {
-    if (isUserLogedIn) {
+    if (isUserLogedIn && userDonationsPledge) {
       setListOfChurchesDonatedTO(
         userDonationsPledge.map((val, i) => {
           return <SlidingPaneItem
