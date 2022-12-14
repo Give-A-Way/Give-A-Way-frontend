@@ -94,9 +94,10 @@ export default function Church() {
     if (isUserLogedIn && userDonationsPledge) {
       setListOfChurchesDonatedTO(
         userDonationsPledge?.map((val, i) => {
-          console.log(val)
           return <SlidingPaneItem
-            key={`donationKey${i}`}
+            key={`donationKey${val.donation_id}`}
+            setRs={setRs}
+            rs={rs}
             date={val.schedule_time}
             type={val.type_of_donation}
             typeD={val.item_description}
@@ -111,6 +112,7 @@ export default function Church() {
   }, [userDonationsPledge, doNate, churchData, isUserLogedIn])
 
   useEffect(() => {
+    console.log(rs)
     async function getPastData() {
       let pastData = await fetch(`http://localhost:3100/listings/user_ids/past/${userData.id}`).then(response => response.json())
       setUserPastData(pastData)
@@ -137,8 +139,6 @@ export default function Church() {
   const listOfChurches = churchData.map((churches, i) => {
     return (
       <ListChurches
-        setRs={setRs}
-        rs={rs}
         key={`Churchkey${i}`}
         title={churches.church_name}
         churchImg={churches.img}

@@ -9,10 +9,10 @@ const ItemHolder = styled.div`
     padding: ${props => props.padding};
     margin: ${props => props.margin};
     border-radius: 20px;
-    transition: 2s;
+    transition: 1s;
     background-color: #b1ff9f;
     &[data-status = "true"]:hover{
-        transform: scale(1.1);
+        transform: scale(1.1) translateX(-20px);
         background-color: #7dff5f;
     }
     transform: ${props => props.displayItem};
@@ -54,6 +54,7 @@ export default function SlidingPaneItem(props) {
     const [clickedCheck, setClickedCheck] = useState(false)
     const [divPadding, setDivPadding] = useState("5px 5px")
     const [divBorder, setDivBorder] = useState("2px")
+    const { doNate, setdoNate } = useContext(Context)
     useEffect(() => {
         async function upDateStatusOfDonation() {
             let requestOptions = {
@@ -69,11 +70,10 @@ export default function SlidingPaneItem(props) {
                 setDivPadding("0 0 0 0")
                 setDivMargin("0")
                 setDivBorder("0px")
+                setdoNate(doNate+1)
             }, 2000)
         }
     }, [clickedCheck])
-    // console.log("here")
-    // console.log(props.date)
     return (
         <ItemHolder data-status={hover} displayItem={displayItem} heightOFdiv={heightOFdiv} padding={divPadding} margin={divMargin} border={divBorder}>
             <DonationDataContaner>
@@ -92,7 +92,7 @@ export default function SlidingPaneItem(props) {
                 <Checkbox type="checkbox" onClick={() => {
                     setDisplayItem("scale(0)")
                     sethover(false)
-                    props.setRs(props.rs+1)
+                    props.setRs(props.rs + 1)
                     setClickedCheck(true)
                 }}/>
             </CheckboxHolder>

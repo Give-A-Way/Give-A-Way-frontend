@@ -18,7 +18,7 @@ import {
 
 const ListChurches = (props) => {
   const navigate = useNavigate();
-  const { isUserLogedIn } = useContext(Context);
+  const { isUserLogedIn, doNate, setdoNate } = useContext(Context);
   const [donateError, setDonateError] = useState("");
   return (
     <div>
@@ -53,7 +53,10 @@ const ListChurches = (props) => {
 
             <button
               style={{ backgroundColor: "#2ea44e", borderRadius: "10px", textDecoration: "none" }}
-              onClick={() => { navigate(`/church/${props.linkID}`) }}
+              onClick={() => {
+                navigate(`/church/${props.linkID}`)
+                setdoNate(doNate + 1)
+              }}
             >Donate
             </button>
           ) :

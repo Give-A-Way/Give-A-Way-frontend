@@ -102,7 +102,7 @@ const Details = (props) => {
     // takes the user back to the hompage
     setTimeout(() => {
       goToHomePage();
-    }, 1000)
+    }, 500)
   };
 
   return (

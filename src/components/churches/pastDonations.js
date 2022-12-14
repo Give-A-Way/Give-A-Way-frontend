@@ -10,7 +10,7 @@ const ItemHolder = styled.div`
     padding: ${props => props.padding};
     margin: ${props => props.margin};
     border-radius: 20px;
-    transition: 2s;
+    transition: 1s;
     background-color: gray;
     &[data-status = "true"]:hover{
         transform: scale(1.1);
