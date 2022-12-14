@@ -1,29 +1,35 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,300);
 
-#title{
-    font-size:60px;
+#title {
+    font-size: 60px;
     margin: 0 0 30px;
-    color:#6373ff;
+    color: rgb(199, 246, 161);
+    font-family: 'Aclonica', sans-serif;
     text-align: center;
 }
-#church-location{
+
+#church-location {
     font-size: 20px;
     margin: 10px 0 0;
 }
+
 * {
     box-sizing: border-box;
 }
+
 .here-i-am div,
-.here-i-am label{
+.here-i-am label {
     background-color: rgb(255, 255, 255) !important;
 }
+
 .here-i-am label {
-    width:200px;
+    width: 200px;
     text-align: center;
     border-radius: 50px;
     // border-top-left-radius: 200px 60px !important;
     // border-top-right-radius: 200px 60px !important;
 }
+
 // html {
 //     height: 100%;
 // }
@@ -38,7 +44,7 @@
 
 /* Form element setup */
 #cd-form {
-    
+
     width: 300px;
     margin: 20px 0;
     z-index: 1;
