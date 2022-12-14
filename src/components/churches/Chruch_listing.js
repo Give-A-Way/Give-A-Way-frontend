@@ -3,6 +3,8 @@ import { useContext, useState } from "react";
 import Context from "../../context/Context";
 import * as mdb from "mdb-ui-kit";
 import styled from "@emotion/styled";
+import { useNavigate } from "react-router-dom";
+
 import {
   MDBCard,
   MDBCardBody,
@@ -15,14 +17,14 @@ import {
 
 
 const ListChurches = (props) => {
+  const navigate = useNavigate();
   const { isUserLogedIn } = useContext(Context);
   const [donateError, setDonateError] = useState("");
   return (
     <div>
       <MDBCard
         style={{
-          boxShadow:
-            "rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px",
+          boxShadow: "rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px",
           width: "300px",
           height: "400px",
           margin: "10px 5px",
@@ -47,30 +49,15 @@ const ListChurches = (props) => {
             <MDBCardText>{props.address}</MDBCardText>
           </div>
           {isUserLogedIn ? (
-            
-            <button style={{
-              backgroundColor: "#2ea44e",
-              borderRadius: "10px",
-              textDecoration: "none",
-            }} href="#">
-              <Link 
-              style={
-                {color: "black",
-                textDecoration: "none"}
-              }
-              to={`${props.linkID}`}>Donate</Link>
+
+            <button
+              style={{ backgroundColor: "#2ea44e", borderRadius: "10px", textDecoration: "none"}}
+              onClick={() => {navigate(`/church/${props.linkID}`) }}
+            >Donate
             </button>
           ) : (
             <div>
-              <button
-                href="#"
-                onClick={(e) => {
-                  e.preventDefault();
-                  setDonateError("login first");
-                }}
-              >
-                Donate
-              </button>
+              <button href="#" onClick={() => {setDonateError("login first")}}>Donate</button>
               <p style={{ margin: "5px 10px" }}>{donateError}</p>
             </div>
           )}
