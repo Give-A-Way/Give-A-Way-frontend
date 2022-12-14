@@ -10,15 +10,13 @@ const ItemHolder = styled.div`
     margin: ${props => props.margin};
     border-radius: 20px;
     transition: 2s;
+    color : white;
     background-color: #72cd5d;
     &[data-status = "true"]:hover{
         transform: scale(1.1);
         background-color: #7dff5f;
     }
     transform: ${props => props.displayItem};
-`;
-const CLocation = styled.div`
-    font-size: 10px;
 `;
 const CheckboxHolder = styled.div`
     position: relative;
@@ -36,13 +34,25 @@ const Checkbox = styled.input`
 const DonationDataContaner = styled.div`
     width: 310px;
 `;
+const TimeOfDonation = styled.div`
+    font-size: 18px;
+    && p{
+        margin: 0;
+    }
+`;
+
+const ChurchName = styled.p`
+    margin: 8px 0 0 0
+`
+const CLocation = styled.p`
+    font-size: 10px;
+`;
 export default function SlidingPaneItem(props) {
     const [displayItem, setDisplayItem] = useState("scale(1)")
     const [heightOFdiv, setHeightOFdiv] = useState("auto")
     const [hover, sethover] = useState("true")
     const [divMargin, setDivMargin] = useState("0 0 10px")
     const [clickedCheck, setClickedCheck] = useState(false)
-    const { doNate, setdoNate } = useContext(Context)
     const [divPadding, setDivPadding] = useState("5px 5px")
     const [divBorder, setDivBorder] = useState("2px")
     useEffect(() => {
@@ -63,24 +73,28 @@ export default function SlidingPaneItem(props) {
             }, 2000)
         }
     }, [clickedCheck])
-    console.log("here")
-    console.log(props.date)
+    // console.log("here")
+    // console.log(props.date)
     return (
         <ItemHolder data-status={hover} displayItem={displayItem} heightOFdiv={heightOFdiv} padding={divPadding} margin={divMargin} border={divBorder}>
             <DonationDataContaner>
-                <p>{props.cName}</p>
-                <CLocation>address: {props.cLocation}</CLocation>
-                <p>{props.type}</p>
-                <p>time of Donation</p>
-                <p>{`${props.date.slice(5, 7) + "/" + props.date.slice(8, 10) + "/"  + props.date.slice(0, 4)  }`}</p>
-                <p>at {`${(props.date.slice(11, 13) === '00' ? 12 : +props.date.slice(11, 13) >= 13 ? +props.date.slice(11, 13) - 12 : props.date.slice(11, 13) ) + ":" + props.date.slice(14, 16)}`+(+props.date.slice(11, 13) >= 12? "pm":"am" )}</p> 
+                <TimeOfDonation>
+                    <p style={{ fontSize:"12px"  }}>Time of Donation:</p>
+                    <p>{`${props.dayOf}`} at {(props.date.slice(0, 2) === "00" ? 12 : (+props.date.slice(0, 2) > 12 ? +props.date.slice(0, 2) - 12 : props.date.slice(0, 2))) + props.date.slice(2, 5) + (+props.date.slice(0, 2) >= 12 ? "pm" : "am")}</p>
+                </TimeOfDonation>
+                
+                <ChurchName>To: {props.cName}</ChurchName>
+                <CLocation>Address: {props.cLocation}</CLocation>
+                
+                <p>Your Donation:</p>
+                <p>here{props.type}</p>
             </DonationDataContaner>
             <CheckboxHolder>
                 <Checkbox type="checkbox" onClick={() => {
                     setDisplayItem("scale(0)")
                     sethover(false)
                     setClickedCheck(true)
-                    
+
                 }} />
             </CheckboxHolder>
         </ItemHolder>

@@ -20,8 +20,14 @@
     left: calc(50% - 10px);
     top: 25px;
     opacity: 0;
+    background-color: #b1e688;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    padding: 4.25px 0 0 0;
+    text-align: center;
     visibility: hidden;
-    color: #E5EBB2;
+    color: #4ac21e;
     transition: opacity 0.2s linear,
         top 0.2s linear,
         left 0.2s linear,
@@ -44,35 +50,36 @@
     visibility: visible;
     opacity: 1;
     text-decoration: none;
+    transition: 1s;
 }
 
 .menu-open-page:checked~.menu-page a:nth-child(1) {
-    left: calc(50% + 10px);
-    top: -20px;
+    left: calc(50% + 25px);
+    top: -35px;
     transform: scale(1.5);
 }
 
 .menu-open-page:checked~.menu-page a:nth-child(2) {
-    left: calc(50% - 25px);
-    top: 0px;
+    left: calc(50% - 20px);
+    top: -10px;
     transform: scale(1.5);
 }
 
 .menu-open-page:checked~.menu-page a:nth-child(3) {
     left: calc(50% - 35px);
-    top: 40px;
+    top: 35px;
     transform: scale(1.5);
 }
 
 .menu-open-page:checked~.menu-page a:nth-child(4) {
-    left: calc(50% - 25px);
-    top: 75px;
+    left: calc(50% - 20px);
+    top: 80px;
     transform: scale(1.5);
 }
 
 .menu-open-page:checked~.menu-page a:nth-child(5) {
-    left: calc(50% + 10px);
-    top: 100px;
+    left: calc(50% + 22.5px);
+    top: 105px;
     transform: scale(1.5);
 }
 
@@ -107,7 +114,7 @@
     transform:scale(1.3)
 }
 .menu-open-page:checked ~ .menu-button-page {
-    transform: scale(1.5) translateX(30px) translateY(25px);
+    transform: scale(1.5) translateX(40px) translateY(25px);
 }
 .menu-open-page:checked~ .menu-button-page:hover{
     background: #FF8787;
@@ -117,11 +124,12 @@
     transform: scale(16) translateX(.8px) translateY(2.25px);
 }
 
-.menu-open-page:checked~.menu-page a:nth-child(1):hover {
-    color: #91d25f;
+.menu-open-page:checked~.menu-page a:hover {
+    color: #2f910b;
+    transform: scale(2);
 }
 
-.menu-open-page:checked~.menu-page a:nth-child(2):hover {
+/* .menu-open-page:checked~.menu-page a:nth-child(2):hover {
  color: #91d25f;
 }
 
@@ -137,4 +145,4 @@
     color: #91d25f;
 
 }
-
+ */
