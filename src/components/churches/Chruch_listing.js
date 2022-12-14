@@ -48,19 +48,22 @@ const ListChurches = (props) => {
             <MDBCardTitle>{props.title}</MDBCardTitle>
             <MDBCardText>{props.address}</MDBCardText>
           </div>
+          <p style={{ margin: "5px 10px", color: "red", fontWeight:"bold" }}>{donateError}</p>
           {isUserLogedIn ? (
 
             <button
-              style={{ backgroundColor: "#2ea44e", borderRadius: "10px", textDecoration: "none"}}
-              onClick={() => {navigate(`/church/${props.linkID}`) }}
+              style={{ backgroundColor: "#2ea44e", borderRadius: "10px", textDecoration: "none" }}
+              onClick={() => { navigate(`/church/${props.linkID}`) }}
             >Donate
             </button>
-          ) : (
-            <div>
-              <button href="#" onClick={() => {setDonateError("login first")}}>Donate</button>
-              <p style={{ margin: "5px 10px" }}>{donateError}</p>
-            </div>
-          )}
+          ) :
+            <button
+              onClick={() => { setDonateError("login first") }}
+              style={{ backgroundColor: "#2ea44e", borderRadius: "10px", textDecoration: "none" }}
+            >Donate</button>
+              
+          }
+                
         </MDBCardBody>
       </MDBCard>
 
