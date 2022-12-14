@@ -8,7 +8,7 @@ import "react-sliding-pane/dist/react-sliding-pane.css";
 import React, { Component, useState } from "react";
 import { render } from "react-dom";
 import SlidingPaneItem from "./userDonations";
-
+import SlidingPaneItemPast from "./pastDonations";
 const ChurchesDiv = styled.div`
    display: flex;
     flex-wrap: wrap;
@@ -80,21 +80,25 @@ const LgH = styled.h1`
   font-size: 18px;
 `;
 export default function Church() {
-  const { churchData, isUserLogedIn, userDonationsPledge, doNate } = useContext(Context);
+  const { churchData, isUserLogedIn, userDonationsPledge, doNate, userData } = useContext(Context);
   const [state, setState] = useState({
     isPaneOpen: false,
     isPaneOpenLeft: false,
   });
+  const [rs,setRs] = useState(0)
+  const [userPastData, setUserPastData] = useState([])
+
   const [listOfChurchesDonatedTO, setListOfChurchesDonatedTO] = useState("")
   useEffect(() => {
     if (isUserLogedIn && userDonationsPledge) {
       setListOfChurchesDonatedTO(
         userDonationsPledge?.map((val, i) => {
-          console.log(val.schedule_time)
+          console.log(val)
           return <SlidingPaneItem
             key={`donationKey${i}`}
             date={val.schedule_time}
-            type={val.item_description}
+            type={val.type_of_donation}
+            typeD={val.item_description}
             cName={val.church_name}
             cLocation={val.location}
             DId={val.donation_id}
@@ -105,9 +109,35 @@ export default function Church() {
     }
   }, [userDonationsPledge, doNate, churchData, isUserLogedIn])
 
+  useEffect(() => {
+    async function getPastData() {
+      let pastData = await fetch(`http://localhost:3100/listings/user_ids/past/${userData.id}`).then(response => response.json())
+      setUserPastData(pastData)
+    }
+    if (isUserLogedIn) { 
+      getPastData()
+    }
+  }, [isUserLogedIn, rs])
+ 
+  const pastData = userPastData.map((val, i) => {
+    console.log(val)
+    return <SlidingPaneItemPast
+        key={`Churchherekey${i}`}
+      date={val.schedule_time}
+      type={val.type_of_donation}
+      typeD={val.item_description}
+      cName={val.church_name}
+      cLocation={val.location}
+      DId={val.donation_id}
+      dayOf={val.day}
+      />
+  });
+
   const listOfChurches = churchData.map((churches, i) => {
     return (
       <ListChurches
+        setRs={setRs}
+        rs={rs}
         key={`Churchkey${i}`}
         title={churches.church_name}
         churchImg={churches.img}
@@ -167,10 +197,15 @@ export default function Church() {
           <ChurchesDiv>
             {listOfChurches}
           </ChurchesDiv>
+          <div>
+            
+          </div>
         </div>
         <ListOfChurchesDonatedTO>
           <MyPledges>My Pledges</MyPledges>
           {listOfChurchesDonatedTO}
+          <h1 style={{ color: "white" }}>Past Donation</h1>
+          {pastData ? pastData : ""}
         </ListOfChurchesDonatedTO>
       </ChurchHolders>
 

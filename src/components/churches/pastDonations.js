@@ -10,7 +10,7 @@ const ItemHolder = styled.div`
     margin: ${props => props.margin};
     border-radius: 20px;
     transition: 2s;
-    background-color: #b1ff9f;
+    background-color: gray;
     &[data-status = "true"]:hover{
         transform: scale(1.1);
         background-color: #7dff5f;
@@ -46,7 +46,7 @@ const ChurchName = styled.p`
 const CLocation = styled.p`
     font-size: 10px;
 `;
-export default function SlidingPaneItem(props) {
+export default function SlidingPaneItemPast(props) {
     const [displayItem, setDisplayItem] = useState("scale(1)")
     const [heightOFdiv, setHeightOFdiv] = useState("auto")
     const [hover, sethover] = useState("true")
@@ -79,7 +79,6 @@ export default function SlidingPaneItem(props) {
             <DonationDataContaner>
                 <TimeOfDonation>
                     <p style={{ fontSize:"12px"  }}>Time of Donation:</p>
-                    <p>{`${props.dayOf}`} at {(props.date.slice(0, 2) === "00" ? 12 : (+props.date.slice(0, 2) > 12 ? +props.date.slice(0, 2) - 12 : props.date.slice(0, 2))) + props.date.slice(2, 5) + (+props.date.slice(0, 2) >= 12 ? "pm" : "am")}</p>
                 </TimeOfDonation>
                 
                 <ChurchName>To: {props.cName}</ChurchName>
@@ -88,14 +87,6 @@ export default function SlidingPaneItem(props) {
                 <p style={{ margin: "0",fontSize:"12px" }}>Your Donating: {props.type}</p>
                 <p>&nbsp;&nbsp;&nbsp;&nbsp;{props.typeD}</p>
             </DonationDataContaner>
-            <CheckboxHolder>
-                <Checkbox type="checkbox" onClick={() => {
-                    setDisplayItem("scale(0)")
-                    sethover(false)
-                    props.setRs(props.rs+1)
-                    setClickedCheck(true)
-                }}/>
-            </CheckboxHolder>
         </ItemHolder>
     )
 }

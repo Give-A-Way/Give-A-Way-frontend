@@ -21,6 +21,14 @@ const ChurchComp = styled.div`
 const FormHolder = styled.div`
   margin: 40px 0 0 0
 `;
+const SidePanel = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+`
+const ChurchImgHolder = styled.div`
+
+`;
 const Details = (props) => {
   const [dateWithInitialValue, setDateWithInitialValue] = React.useState(
     dayjs(new Date()),
@@ -55,6 +63,7 @@ const Details = (props) => {
 
       await fetch("http://localhost:3100/listings", requestOptions)
       setdoNate(doNate + 1);
+      console.log(doNate)
     }
 
     if (submissionData) {
@@ -91,52 +100,57 @@ const Details = (props) => {
 
     // updates the state and places the church donated to to the bottom of the page
     // takes the user back to the hompage
-    setTimeout(() => { 
+    setTimeout(() => {
       goToHomePage();
-    },1000)
+    }, 1000)
   };
 
   return (
     <ChurchComp>
       <h2 id="title">{props.title}</h2>
-      <img
-        width={343}
-        height={201}
-        src={props.churchImg}
-        alt={props.churchImg}
-      />
-      <h4 id="church-location">{props.location}</h4>
-      {/* <textarea class="textarea" placeholder="What would you like to donate?"></textarea> */}
-      {/* <form onSubmit={changeStatus}>
+      <SidePanel>
+        <ChurchImgHolder>
+          <img
+            width={343}
+            height={201}
+            src={props.churchImg}
+            alt={props.churchImg}
+          />
+          <h4 id="church-location" style={{
+            color: "rgb(199, 246, 161)",
+            fontFamily: `'Aclonica', sans-serif`}}>{props.location}</h4>
+        </ChurchImgHolder>
+        {/* <textarea class="textarea" placeholder="What would you like to donate?"></textarea> */}
+        {/* <form onSubmit={changeStatus}>
         <label for="start">Enter the Date:</label>
         <input type="submit" className="cd-input" value="Submit" />
       </form> */}
-      <FormHolder>
-        <LocalizationProvider dateAdapter={AdapterDayjs}>
-          <Stack spacing={3}>
-            <MobileDateTimePicker
-              className="here-i-am"
-              value={dateWithInitialValue}
-              onChange={(newValue) => {
-                console.log(newValue)
-                setDateWithInitialValue(newValue);
-              }}
-              label="select date of donation"
-              onError={console.log}
-              minDate={dayjs(minDayToDonate)}
-              inputFormat="YYYY/MM/DD hh:mm a"
-              mask="____/__/__ __:__ _M"
-              renderInput={(params) => <TextField {...params} />}
-            />
-          </Stack>
-        </LocalizationProvider>
-        <form onSubmit={changeStatus} id="cd-form">
+        <FormHolder>
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <Stack spacing={3}>
+              <MobileDateTimePicker
+                className="here-i-am"
+                value={dateWithInitialValue}
+                onChange={(newValue) => {
+                  console.log(newValue)
+                  setDateWithInitialValue(newValue);
+                }}
+                label="select date of donation"
+                onError={console.log}
+                minDate={dayjs(minDayToDonate)}
+                inputFormat="YYYY/MM/DD hh:mm a"
+                mask="____/__/__ __:__ _M"
+                renderInput={(params) => <TextField {...params} />}
+              />
+            </Stack>
+          </LocalizationProvider>
+          <form onSubmit={changeStatus} id="cd-form">
 
-          {/* <fieldset>
+            {/* <fieldset>
           <label for="firstName">Full name</label>
           <input type="text" name="name" id="firstName" className="cd-input" placeholder="Optimus Prime" />
         </fieldset> */}
-          {/* <fieldset>
+            {/* <fieldset>
           <legend>Type of Donation</legend>
           <input type="radio" id="radio1" className="cd-input" name="radios" checked />
           <label for="radio1">Radio 1</label><br />
@@ -145,24 +159,24 @@ const Details = (props) => {
           <input type="radio" id="radio3" className="cd-input" name="radios" />
           <label for="radio3">Radio 3</label>
         </fieldset> */}
-          <fieldset>
-            <label htmlFor="select-choice">Type of Donation</label>
-            <select className="cd-select" name="select-choice" id="select-choice">
-              <option key="donation-type-choice-1" value="Choice 1">- - select one - -</option>
-              <option key="donation-type-choice-2" value="Food">Food</option>
-              <option key="donation-type-choice-3" value="Drinks">Drinkss</option>
-              <option key="donation-type-choice-4" value="Clothes">Clothes</option>
-              <option key="donation-type-choice-6" value="Money">Money</option>
-              <option key="donation-type-choice-5" value="Other">Other</option>
-            </select>
-          </fieldset>
+            <fieldset>
+              <label htmlFor="select-choice">Type of Donation</label>
+              <select className="cd-select" name="select-choice" id="select-choice">
+                <option key="donation-type-choice-1" value="Choice 1">- - select one - -</option>
+                <option key="donation-type-choice-2" value="Food">Food</option>
+                <option key="donation-type-choice-3" value="Drinks">Drinkss</option>
+                <option key="donation-type-choice-4" value="Clothes">Clothes</option>
+                <option key="donation-type-choice-6" value="Money">Money</option>
+                <option key="donation-type-choice-5" value="Other">Other</option>
+              </select>
+            </fieldset>
 
-          <fieldset>
-            <label htmlFor="textarea">Description of Donation</label>
-            <textarea className="cd-textarea" name="textarea" id="textarea" placeholder="Description of Donation..."></textarea>
-          </fieldset>
+            <fieldset>
+              <label htmlFor="textarea">Description of Donation</label>
+              <textarea className="cd-textarea" name="textarea" id="textarea" placeholder="Description of Donation..."></textarea>
+            </fieldset>
 
-          {/* <fieldset>
+            {/* <fieldset>
           <legend>Group 1</legend>
           <input type="checkbox" id="check1" className="cd-input" name="checkboxes" checked />
           <label for="check1">Checkbox 1</label><br />
@@ -173,9 +187,11 @@ const Details = (props) => {
         </fieldset> */}
 
 
-          <input type="submit" value="Submit" id="button" className="cd-input" />
-        </form>
-      </FormHolder>
+            <input type="submit" value="Submit" id="button" className="cd-input" />
+          </form>
+        </FormHolder>
+      </SidePanel>
+
     </ChurchComp>
   );
 };
