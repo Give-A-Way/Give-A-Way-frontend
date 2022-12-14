@@ -4,6 +4,7 @@ import Context from "../../context/Context";
 
 const ItemHolder = styled.div`
     display:  flex;
+    width: 310px;
     height: ${props => props.heightOFdiv};
     border: ${props => props.border} solid #476e41;
     padding: ${props => props.padding};

@@ -13,9 +13,9 @@ const ChurchesDiv = styled.div`
    display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    padding: 0 80px;
-    width: 90%;
-    margin: 0 auto
+    padding: 0 0 0 30px;
+    margin: 0 5px 0 60px;
+    width: 80%;
 `
 const SlidePanelHeader = styled.p`
   background-color: silver;
@@ -33,16 +33,17 @@ const SlideButton = styled.button`
 const MyPledges = styled.h1`
   color: rgb(199, 246, 161);
   font-family: ${`'Aclonica', sans-serif`};
-  
+  width: 330px;
 `;
 const ChurchHolders = styled.div`
   display: flex;
   margin: 100px 0 0 0;
 `
 const ListOfChurchesDonatedTO = styled.div`
-  margin: 0 30px 0 0;
-  padding: 0 0 0 20px;
+  margin: 0 0 0 0;
+  padding: 0 0 0 0;
   border-left: 4px solid #0f470a;
+  width: 340px;
 `;
 const LogoHolder = styled.div`
   width: 124px;
@@ -197,9 +198,6 @@ export default function Church() {
           <ChurchesDiv>
             {listOfChurches}
           </ChurchesDiv>
-          <div>
-            
-          </div>
         </div>
         <ListOfChurchesDonatedTO>
           <MyPledges>My Pledges</MyPledges>
