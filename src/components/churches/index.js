@@ -30,6 +30,55 @@ const SlideButton = styled.button`
     transform: scale(1.1);
   }
 `;
+const MyPledges = styled.h1`
+  color: rgb(199, 246, 161);
+  font-family: ${`'Aclonica', sans-serif`};
+  
+`;
+const ChurchHolders = styled.div`
+  display: flex;
+  margin: 100px 0 0 0;
+`
+const ListOfChurchesDonatedTO = styled.div`
+  margin: 0 30px 0 0;
+  padding: 0 0 0 20px;
+  border-left: 4px solid #0f470a;
+`;
+const LogoHolder = styled.div`
+  width: 124px;
+  height: 124px;
+  position: absolute;
+  left: calc(50% - 70px);
+  transform:scale(1.2);
+`;
+const C1 = styled.div`
+  height: 100%;
+  border-radius: 50%;
+  border: 5px solid white;
+  border-left-color: #091801;
+  border-bottom-color: #091801;
+  transform: rotate(45deg);
+`;
+const C2 = styled.div`
+  height: 100%;
+    border-radius: 50%;
+    border: 5px solid white;
+    border-top-left: 0px;
+    transform: scale(.8);
+`;
+const S1 = styled.div`
+  width: 62px;
+  height: 62px;
+  background-color: #091801;
+  position: absolute; 
+  top: 0;
+`
+const LgH = styled.h1`
+  position: absolute; 
+  top: 37px;
+  color: white;
+  font-size: 18px;
+`;
 export default function Church() {
   const { churchData, isUserLogedIn, userDonationsPledge, doNate } = useContext(Context);
   const [state, setState] = useState({
@@ -74,7 +123,16 @@ export default function Church() {
       <NavCircle
         style={{ position: "absolute", top: "10px" }}
       />
-      <h1 style={{ textAlign: "center" }}>Church Donation page</h1>
+      <LogoHolder>
+        <C1>
+          <C2>
+          </C2>
+        </C1>
+
+        <S1>
+        </S1>
+        <LgH>Give-A-Way</LgH>
+      </LogoHolder>
       <div style={{
         marginTop: "50px",
         marginRight: "32px",
@@ -82,11 +140,12 @@ export default function Church() {
         justifyContent: "flex-end"
       }}>
 
-        {isUserLogedIn ? <SlideButton onClick={() => setState({ isPaneOpen: true })}>
+        {/* {isUserLogedIn ? <SlideButton onClick={() => setState({ isPaneOpen: true })}>
           Donations pledge
-        </SlideButton> : ""}
+        </SlideButton> : ""} */}
       </div>
-      <SlidingPane
+
+      {/* <SlidingPane
         className="some-custom-class"
         overlayClassName="some-custom-overlay-class"
         isOpen={state.isPaneOpen}
@@ -101,8 +160,18 @@ export default function Church() {
       >
         <SlidePanelHeader>Up coming donations</SlidePanelHeader>
         {listOfChurchesDonatedTO}
-      </SlidingPane>
-      <ChurchesDiv>{listOfChurches}</ChurchesDiv>
+      </SlidingPane> */}
+      <ChurchHolders>
+        <div>
+          <ChurchesDiv>
+            {listOfChurches}
+          </ChurchesDiv>
+        </div>
+        <ListOfChurchesDonatedTO>
+          <MyPledges>My Pledges</MyPledges>
+          {listOfChurchesDonatedTO}
+        </ListOfChurchesDonatedTO>
+      </ChurchHolders>
 
     </div>
   );

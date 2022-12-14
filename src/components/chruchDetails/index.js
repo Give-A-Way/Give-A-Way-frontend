@@ -34,12 +34,12 @@ export default function ChurchDetails() {
       <NavCircle />
       <ChurchDetailsHolder>
 
-        {/* <Details
+        <Details
           title={currPage.church_name}
           churchImg={currPage.img}
           location={currPage.location}
           id={currPage.id}
-        /> */}
+        />
         {/* <Calendar /> */}
       </ChurchDetailsHolder>
     </div>

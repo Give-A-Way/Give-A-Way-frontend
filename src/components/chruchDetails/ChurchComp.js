@@ -31,7 +31,7 @@ const Details = (props) => {
   let cuurentDate = new Date()
   // fetch call to backend server
   useEffect(() => {
-    setMinDayToDonate(`${cuurentDate.getFullYear()}-${cuurentDate.getMonth() + 1}-${cuurentDate.getDate()}T${cuurentDate.getUTCHours() + 19}:${cuurentDate.getMinutes()}`)
+    setMinDayToDonate(`${cuurentDate.getFullYear()}-${cuurentDate.getMonth() + 1}-${cuurentDate.getDate()}T${cuurentDate.getUTCHours()}:${cuurentDate.getMinutes()}`)
 
     async function changeData() {
       let myHeaders = new Headers();
@@ -86,7 +86,9 @@ const Details = (props) => {
 
     // updates the state and places the church donated to to the bottom of the page
     // takes the user back to the hompage
-    // goToHomePage();
+    setTimeout(() => { 
+      goToHomePage();
+    },1000)
   };
 
   return (
