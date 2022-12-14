@@ -10,6 +10,8 @@ const AboutInfo = styled.h1`
     position: relative;
     left: 65px;
     top: 45px;
+    color: rgb(199, 246, 161);
+    font-family: ${`'Aclonica', sans-serif`};
 `
 
 const GalleryDiv = styled.div`
@@ -32,7 +34,7 @@ const Text = styled.p`
   width: 300px;
   padding: 20px;
   margin: 0;
-  color: darkgreen;
+  color: rgb(199, 246, 161);
 `;
 export default function Aboutpage() {
   const { isUserLogedIn } = useContext(Context);
@@ -48,17 +50,17 @@ export default function Aboutpage() {
         routerLinks={
           isUserLogedIn
             ? [
-                { link: "../", name: "home" },
-                { link: "../church", name: "church" },
-                { link: "../about", name: "about" },
-              ]
+              { link: "../", name: "home" },
+              { link: "../church", name: "church" },
+              { link: "../about", name: "about" },
+            ]
             : [
-                { link: "../", name: "home" },
-                { link: "../church", name: "church" },
-                { link: "../about", name: "about" },
-                { link: "../login", name: "login" },
-                { link: "../signup", name: "signup" },
-              ]
+              { link: "../", name: "home" },
+              { link: "../church", name: "church" },
+              { link: "../about", name: "about" },
+              { link: "../login", name: "login" },
+              { link: "../signup", name: "signup" },
+            ]
         }
       />
       <AboutUs>
@@ -79,7 +81,7 @@ export default function Aboutpage() {
             </Text>
           </InformationBox>
         </div>
-        <h2>why we do this</h2>
+        <AboutInfo>why we do this </AboutInfo>
         <InformationBox>
           <Text>
             Rising prices on food and other necessities due to inflation have
@@ -95,7 +97,7 @@ export default function Aboutpage() {
             alt="https://alearningbeeacademy.org/wp-content/uploads/2020/05/ALB-Pics18.jpg"
           />
         </InformationBox>
-        <h2>Our Goal</h2>
+        <AboutInfo>Our Goal</AboutInfo>
         <InformationBox>
           <img
             width={343}
