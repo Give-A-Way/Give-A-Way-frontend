@@ -90,7 +90,7 @@ export default function Church() {
     if (isUserLogedIn && userDonationsPledge) {
       setListOfChurchesDonatedTO(
         userDonationsPledge?.map((val, i) => {
-          console.log(val)
+          console.log(val.schedule_time)
           return <SlidingPaneItem
             key={`donationKey${i}`}
             date={val.schedule_time}
@@ -98,6 +98,7 @@ export default function Church() {
             cName={val.church_name}
             cLocation={val.location}
             DId={val.donation_id}
+            dayOf={val.day}
           />
         })
       )

@@ -41,7 +41,9 @@ const Details = (props) => {
         "id": props.id,
         "user_id": userData.id,
         "itemDescription": submissionData.description,
-        "time": submissionData.time
+        "type": submissionData.type,
+        "time": submissionData.time,
+        "day": submissionData.day
       });
 
       let requestOptions = {
@@ -74,11 +76,14 @@ const Details = (props) => {
 
   const changeStatus = (e) => {
     rain()
+    // YYYY / MM / DD hh:mm a
     e.preventDefault();
+    let myTime = "" + (dateWithInitialValue.$H < 10 ? `0${dateWithInitialValue.$H}` : dateWithInitialValue.$H) + ":" + (dateWithInitialValue.$m < 10 ? `0${dateWithInitialValue.$m}` : dateWithInitialValue.$m)
     SetsubmissionData({
       type: e.target[1].value,
       description: e.target[3].value,
-      time: dateWithInitialValue
+      time: myTime,
+      day: `${dateWithInitialValue.$M + 1}/${dateWithInitialValue.$D}/${dateWithInitialValue.$y}`
     });
     rain()
 
@@ -113,6 +118,7 @@ const Details = (props) => {
               className="here-i-am"
               value={dateWithInitialValue}
               onChange={(newValue) => {
+                console.log(newValue)
                 setDateWithInitialValue(newValue);
               }}
               label="select date of donation"

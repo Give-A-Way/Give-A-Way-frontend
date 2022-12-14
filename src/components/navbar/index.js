@@ -41,7 +41,7 @@ export default function NavCircle(props) {
                 setNavBackground(navBackground === "none"?"block":"none")
             }}/>
             <label className="menu-button-page" htmlFor="menu-open" aria-hidden="true">Menu</label>
-            <div className="nav-background"></div>
+            
             <nav className="menu-page" role="navigation">
                 {navLinkist}
                 {isUserLogedIn ? <a
