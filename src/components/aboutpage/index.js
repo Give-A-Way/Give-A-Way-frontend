@@ -11,7 +11,8 @@ const AboutInfo = styled.h1`
     left: 65px;
     top: 45px;
     color: rgb(199, 246, 161);
-    font-family: ${`'Aclonica', sans-serif`};
+    font-family: ${`'Quicksand', sans-serif`};
+    font-weight: 1000;
 `
 
 const GalleryDiv = styled.div`
@@ -70,6 +71,7 @@ export default function Aboutpage() {
             <img
               width={343}
               height={201}
+              style={{borderRadius: "50%"}}
               src="https://www.stpaul.gov/sites/default/files/Media%20Root/Planning%20%26%20Economic%20Development/make-connections.png"
               alt="https://www.stpaul.gov/sites/default/files/Media%20Root/Planning%20%26%20Economic%20Development/make-connections.png"
             />
@@ -93,6 +95,7 @@ export default function Aboutpage() {
           <img
             width={343}
             height={201}
+            style={{ borderRadius: "50%" }}
             src="https://alearningbeeacademy.org/wp-content/uploads/2020/05/ALB-Pics18.jpg"
             alt="https://alearningbeeacademy.org/wp-content/uploads/2020/05/ALB-Pics18.jpg"
           />
@@ -102,6 +105,7 @@ export default function Aboutpage() {
           <img
             width={343}
             height={201}
+            style={{ borderRadius: "50%" }}
             src="http://files.cluster2.hgsitebuilder.com/hostgator49813/image/helpinghandslicensed2.jpg"
             alt="http://files.cluster2.hgsitebuilder.com/hostgator49813/image/helpinghandslicensed2.jpg"
           />
