@@ -27,7 +27,8 @@ const SidePanel = styled.div`
   width: 100%;
 `
 const ChurchImgHolder = styled.div`
-
+margin-right: 70px;
+padding-top: 30px;
 `;
 const Details = (props) => {
   const [dateWithInitialValue, setDateWithInitialValue] = React.useState(
