@@ -25,8 +25,12 @@ const SidePanel = styled.div`
   display: flex;
   justify-content: space-evenly;
   width: 100%;
+
+`
+const ChurchImgHolder = styled.div`
+margin-right: 70px;
+padding-top: 30px;
 `;
-const ChurchImgHolder = styled.div``;
 const Details = (props) => {
   const [dateWithInitialValue, setDateWithInitialValue] = React.useState(
     dayjs(new Date())

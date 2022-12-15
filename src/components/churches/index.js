@@ -200,7 +200,7 @@ export default function Church() {
           </ChurchesDiv>
         </div>
         <ListOfChurchesDonatedTO>
-          <MyPledges>My Pledges</MyPledges>
+          <MyPledges>My Donations</MyPledges>
           {listOfChurchesDonatedTO}
           <h1 style={{ color: "white", fontFamily:"'Quicksand', sans-serif" }}>Past Donation</h1>
           {pastData ? pastData : ""}
