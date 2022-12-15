@@ -42,10 +42,10 @@ function NavCircle(props) {
               id="home-header"
               href="#cool"
               style={{
-                fontSize: "27px",
-                fontFamily: `'Aclonica', sans-serif`,
-                textAlign: "center"
-
+                fontSize: "30px",
+                fontFamily: `'Quicksand', sans-serif`,
+                textAlign: "center",
+                fontWeight: "1500"
               }}>
               Welcome to Give-A-Way
             </textPath>

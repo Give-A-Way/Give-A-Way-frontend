@@ -118,7 +118,7 @@ const Details = (props) => {
           />
           <h4 id="church-location" style={{
             color: "rgb(199, 246, 161)",
-            fontFamily: `'Aclonica', sans-serif`}}>{props.location}</h4>
+            fontFamily: `'Quicksand', sans-serif`}}>{props.location}</h4>
         </ChurchImgHolder>
         {/* <textarea class="textarea" placeholder="What would you like to donate?"></textarea> */}
         {/* <form onSubmit={changeStatus}>

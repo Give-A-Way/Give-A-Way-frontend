@@ -85,7 +85,7 @@ export default function SlidingPaneItemPast(props) {
                 <ChurchName>To: {props.cName}</ChurchName>
                 <CLocation>Address: {props.cLocation}</CLocation>
                 
-                <p style={{ margin: "0",fontSize:"12px" }}>Your Donating: {props.type}</p>
+                <p style={{ margin: "0",fontSize:"12px" }}>You Donated: {props.type}</p>
                 <p>&nbsp;&nbsp;&nbsp;&nbsp;{props.typeD}</p>
             </DonationDataContaner>
         </ItemHolder>

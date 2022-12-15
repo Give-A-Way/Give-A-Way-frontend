@@ -32,7 +32,7 @@ const SlideButton = styled.button`
 `;
 const MyPledges = styled.h1`
   color: rgb(199, 246, 161);
-  font-family: ${`'Aclonica', sans-serif`};
+  font-family: ${`'Quicksand', sans-serif`};
   width: 330px;
 `;
 const ChurchHolders = styled.div`
@@ -202,7 +202,7 @@ export default function Church() {
         <ListOfChurchesDonatedTO>
           <MyPledges>My Pledges</MyPledges>
           {listOfChurchesDonatedTO}
-          <h1 style={{ color: "white" }}>Past Donation</h1>
+          <h1 style={{ color: "white", fontFamily:"'Quicksand', sans-serif" }}>Past Donation</h1>
           {pastData ? pastData : ""}
         </ListOfChurchesDonatedTO>
       </ChurchHolders>
