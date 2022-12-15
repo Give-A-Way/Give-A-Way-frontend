@@ -69,7 +69,7 @@ export default function Landingpage() {
   const { isUserLogedIn } = useContext(Context)
   return (
     <div>
-      <NavCircle routerLinks={isUserLogedIn ? [{ link: '../', name: "Home" }, { link: '../church', name: "Church" }, { link: '../about', name: "About" }] : [{ link: '../', name: "Home" }, { link: '../church', name: "Church" }, { link: '../about', name: "About" }, { link: '../login', name: "Sign in" }, { link: '../signup', name: "Sign up" }]} />
+      <NavCircle routerLinks={isUserLogedIn ? [{ link: '../', name: "Home" }, { link: '../church', name: "Donate" }, { link: '../about', name: "About" }] : [{ link: '../', name: "Home" }, { link: '../church', name: "Donate" }, { link: '../about', name: "About" }, { link: '../login', name: "Sign in" }, { link: '../signup', name: "Sign up" }]} />
     </div>
   );
 }
