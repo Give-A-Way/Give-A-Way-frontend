@@ -164,7 +164,7 @@ const Details = (props) => {
               <select className="cd-select" name="select-choice" id="select-choice">
                 <option key="donation-type-choice-1" value="Choice 1">- - select one - -</option>
                 <option key="donation-type-choice-2" value="Food">Food</option>
-                <option key="donation-type-choice-3" value="Drinks">Drinkss</option>
+                <option key="donation-type-choice-3" value="Drinks">Drinks</option>
                 <option key="donation-type-choice-4" value="Clothes">Clothes</option>
                 <option key="donation-type-choice-6" value="Money">Money</option>
                 <option key="donation-type-choice-5" value="Other">Other</option>
