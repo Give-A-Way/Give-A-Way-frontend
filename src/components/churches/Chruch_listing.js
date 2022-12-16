@@ -14,8 +14,6 @@ import {
   MDBBtn,
 } from "mdb-react-ui-kit";
 
-
-
 const ListChurches = (props) => {
   const navigate = useNavigate();
   const { isUserLogedIn, doNate, setdoNate } = useContext(Context);
@@ -24,10 +22,11 @@ const ListChurches = (props) => {
     <div>
       <MDBCard
         style={{
-          boxShadow: "rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px",
+          boxShadow:
+            "rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px",
           width: "300px",
           height: "400px",
-          margin: "10px 5px",
+          margin: "10px 20px",
         }}
       >
         <MDBCardImage
@@ -48,25 +47,37 @@ const ListChurches = (props) => {
             <MDBCardTitle>{props.title}</MDBCardTitle>
             <MDBCardText>{props.address}</MDBCardText>
           </div>
-          <p style={{ margin: "5px 10px", color: "red", fontWeight:"bold" }}>{donateError}</p>
+          <p style={{ margin: "5px 10px", color: "red", fontWeight: "bold" }}>
+            {donateError}
+          </p>
           {isUserLogedIn ? (
-
             <button
-              style={{ backgroundColor: "#2ea44e", borderRadius: "10px", textDecoration: "none" }}
-              onClick={() => {
-                navigate(`/church/${props.linkID}`)
-                setdoNate(doNate + 1)
+              style={{
+                backgroundColor: "#2ea44e",
+                borderRadius: "10px",
+                textDecoration: "none",
               }}
-            >Donate
+              onClick={() => {
+                navigate(`/church/${props.linkID}`);
+                setdoNate(doNate + 1);
+              }}
+            >
+              Donate
             </button>
-          ) :
+          ) : (
             <button
-              onClick={() => { setDonateError("login first") }}
-              style={{ backgroundColor: "#2ea44e", borderRadius: "10px", textDecoration: "none" }}
-            >Donate</button>
-              
-          }
-                
+              onClick={() => {
+                setDonateError("login first");
+              }}
+              style={{
+                backgroundColor: "#2ea44e",
+                borderRadius: "10px",
+                textDecoration: "none",
+              }}
+            >
+              Donate
+            </button>
+          )}
         </MDBCardBody>
       </MDBCard>
 
