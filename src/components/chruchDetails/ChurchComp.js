@@ -1,7 +1,7 @@
 import { useEffect, useState, useContext, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import Context from "../../context/Context";
-import confetti from "https://cdn.skypack.dev/canvas-confetti@1";
+import confetti from 'canvas-confetti'
 import styled from "@emotion/styled";
 import "./form.scss";
 
