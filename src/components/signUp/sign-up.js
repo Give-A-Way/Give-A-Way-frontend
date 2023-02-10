@@ -27,7 +27,7 @@ export default function SignUpPage() {
     const [newSignUpData, setNewSignUpData] = useState(null)
     const [signUpFormMessage, setSignUpFormMessage] = useState("")
     const navigate = useNavigate();
-    const goToLogInpPage = () => {
+    const goToLogInPage = () => {
         navigate('../login');
     }
     useEffect(() => {
@@ -54,7 +54,7 @@ export default function SignUpPage() {
                 console.log(catchData)
                 setSignUpFormMessage("Username has been taken")
             } else {
-                goToLogInpPage()
+                goToLogInPage()
             }
         }
         if (newSignUpData) {
