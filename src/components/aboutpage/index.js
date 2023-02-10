@@ -66,7 +66,7 @@ export default function Aboutpage() {
       />
       <AboutUs>
         <div>
-          <AboutInfo>What we do</AboutInfo>
+          <AboutInfo>What we do test</AboutInfo>
           <InformationBox>
             <img
               width={343}
