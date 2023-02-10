@@ -49,7 +49,7 @@ export default function SignUpPage() {
                 redirect: 'follow'
             };
 
-            let catchData = await fetch("http://localhost:3100/authentication/register", requestOptions).then(response => response.json())
+            let catchData = await fetch("https://give-a-way-backend-production.up.railway.app/authentication/register", requestOptions).then(response => response.json())
             if (!catchData.username) {
                 console.log(catchData)
                 setSignUpFormMessage("Username has been taken")

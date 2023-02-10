@@ -31,7 +31,7 @@ export default function Loginpage() {
                 redirect: 'follow'
             };
 
-            let getUserData = await fetch("http://localhost:3100/authentication/login", requestOptions)
+            let getUserData = await fetch("https://give-a-way-backend-production.up.railway.app/authentication/login", requestOptions)
                 .then(response => response.json())
             if (getUserData.message) {
                 console.log(getUserData.message)

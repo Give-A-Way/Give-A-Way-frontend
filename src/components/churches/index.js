@@ -116,9 +116,7 @@ export default function Church() {
   useEffect(() => {
     console.log(rs);
     async function getPastData() {
-      let pastData = await fetch(
-        `http://localhost:3100/listings/user_ids/past/${userData.id}`
-      ).then((response) => response.json());
+      let pastData = await fetch(`https://give-a-way-backend-production.up.railway.app/listings/user_ids/past/${ userData.id }`).then((response) => response.json());
       setUserPastData(pastData);
     }
     if (isUserLogedIn) {

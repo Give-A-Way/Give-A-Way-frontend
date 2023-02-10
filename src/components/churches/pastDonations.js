@@ -61,7 +61,7 @@ export default function SlidingPaneItemPast(props) {
                 method: 'PATCH',
                 redirect: 'follow'
             };
-            await fetch(`http://localhost:3100/listings/donation/${props.DId}`, requestOptions)
+            await fetch(`https://give-a-way-backend-production.up.railway.app/listings/donation/${props.DId}`, requestOptions)
         }
         if (clickedCheck) {
             upDateStatusOfDonation()

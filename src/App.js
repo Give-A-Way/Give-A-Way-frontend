@@ -18,11 +18,11 @@ function App() {
   useEffect(() => {
     async function getUserData() {
 
-      let getUserDonationsPledge = await fetch(`http://localhost:3100/listings/user_id/${userData.id}`).then(response => response.json())
+      let getUserDonationsPledge = await fetch(`https://give-a-way-backend-production.up.railway.app/listings/user_id/${userData.id}`).then(response => response.json())
       setUserDonationsPledge(getUserDonationsPledge)
     }
     async function getData() {
-      let getChurchData = await fetch("http://localhost:3100/listings").then(response => response.json())
+      let getChurchData = await fetch("https://give-a-way-backend-production.up.railway.app/listings").then(response => response.json())
       setChurchData(getChurchData)
     }
     getData()

@@ -67,7 +67,7 @@ const Details = (props) => {
         redirect: "follow",
       };
 
-      await fetch("http://localhost:3100/listings", requestOptions);
+      await fetch("https://give-a-way-backend-production.up.railway.app/listings", requestOptions);
       setdoNate(doNate + 1);
       console.log(doNate);
     }
