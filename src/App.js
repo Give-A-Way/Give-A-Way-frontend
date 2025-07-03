@@ -24,25 +24,22 @@ function App() {
       setUserDonationsPledge(getUserDonationsPledge)
     }
     async function getData() {
-      // let getChurchData = await fetch('https://give-a-way-backend-production.up.railway.app/listings').then(response => {
-      //   console.log(response,"____________________________________________")
-      //   return response.json()
-      // })
-      // setChurchData(getChurchData)
+      let getChurchData = await fetch('https://give-a-way-backend-production.up.railway.app/listings').then(response => { return response.json()})
+      setChurchData(getChurchData)
 
     }
 
-    const loadUChurches = async () => {
-      const [data, error] = await getAllChurches();
-      if (error) {
-        console.log(error)
-      } else if (data) {
-        console.log(data)
-      };
-    }
-    loadUChurches();
+    // const loadUChurches = async () => {
+    //   const [data, error] = await getAllChurches();
+    //   if (error) {
+    //     console.log(error)
+    //   } else if (data) {
+    //     console.log(data)
+    //   };
+    // }
+    // loadUChurches();
 
-    // getData()
+    getData()
     if (isUserLogedIn) {
       getUserData()
     }
