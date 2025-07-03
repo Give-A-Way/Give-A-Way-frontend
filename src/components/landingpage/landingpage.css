@@ -164,3 +164,26 @@
     height: 110px;
     
 }
+
+.warning{
+    display: flex;
+    /* border-radius: 20px; */
+}
+.warning-sign{
+    background-color: rgb(255, 255, 0);
+    padding: 25px 20px 10px;
+    border-radius: 20px 0 0 20px;
+}
+.warning-sign h2{
+    font-size: 60px;
+}
+.warning-text-holder{
+    background-color: rgba(255, 255, 255, 0.748);
+    padding: 10px;
+    border-radius: 0 20px 20px 0;
+}
+.warning-text{
+    font-size: 20px;
+    width: 530px;
+    margin: 0 0 3px 0;
+}

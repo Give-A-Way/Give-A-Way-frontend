@@ -9,6 +9,7 @@ import { useEffect, useContext } from "react";
 import Context from "./context/Context"
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import Aboutpage from "./components/aboutpage";
+import { getAllChurches } from "./adapters/churches";
 
 const AppBodyHere = styled.div`
 `;
@@ -18,25 +19,41 @@ function App() {
   useEffect(() => {
     async function getUserData() {
 
-      let getUserDonationsPledge = await fetch(`https://give-a-way-backend-production.up.railway.app/listings/user_id/${userData.id}`).then(response => response.json())
+      let getUserDonationsPledge = await fetch(`https://give-a-way-backend-production.up.railway.app/listings/user_id/${userData.id}`)
+      // .then(response => response.json())
       setUserDonationsPledge(getUserDonationsPledge)
     }
     async function getData() {
-      let getChurchData = await fetch("https://give-a-way-backend-production.up.railway.app/listings").then(response => response.json())
-      setChurchData(getChurchData)
+      // let getChurchData = await fetch('https://give-a-way-backend-production.up.railway.app/listings').then(response => {
+      //   console.log(response,"____________________________________________")
+      //   return response.json()
+      // })
+      // setChurchData(getChurchData)
+
     }
-    getData()
-    if (isUserLogedIn) { 
+
+    const loadUChurches = async () => {
+      const [data, error] = await getAllChurches();
+      if (error) {
+        console.log(error)
+      } else if (data) {
+        console.log(data)
+      };
+    }
+    loadUChurches();
+
+    // getData()
+    if (isUserLogedIn) {
       getUserData()
     }
-    
+
   }, [setChurchData, doNate, isUserLogedIn, isUserLogedIn])
   return (
     <AppBodyHere>
       <Routes>
         <Route path="/" element={<Landingpage />} />
         <Route path="login" element={<Loginpage />} />
-        <Route path="about" element={<Aboutpage />}/>
+        <Route path="about" element={<Aboutpage />} />
         <Route path="signup" element={<SignUpPage />} />
         <Route path="church" element={<Church />} />
         <Route path="church/:id" element={<ChurchDetails />} />

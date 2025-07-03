@@ -61,6 +61,16 @@ function NavCircle(props) {
           }}>Sign Out</a></li > : ""}
         </ul>
       </nav>
+      <div className="warning">
+        <div className="warning-sign">
+          <h1>⚠️</h1>
+        </div>
+        <div className="warning-text-holder">
+          <h2> Warning: This is a demo application.</h2>
+          <p className="warning-text">Please do not use your real name or email. Use a fake name and a placeholder email address for testing purposes only.</p>
+          <p style={{margin:0}}>ex email:  nlnlas@kmksabd.shcaewa</p>
+        </div>
+      </div>
     </div >
   )
 }
