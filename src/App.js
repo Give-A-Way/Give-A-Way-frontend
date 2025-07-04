@@ -18,9 +18,7 @@ function App() {
 
   useEffect(() => {
     async function getUserData() {
-
-      let getUserDonationsPledge = await fetch(`https://give-a-way-backend-production.up.railway.app/listings/user_id/${userData.id}`)
-      // .then(response => response.json())
+      let getUserDonationsPledge = await fetch(`https://give-a-way-backend-production.up.railway.app/listings/user_id/${userData.id}`).then(response => { return response.json()})
       setUserDonationsPledge(getUserDonationsPledge)
     }
     async function getData() {

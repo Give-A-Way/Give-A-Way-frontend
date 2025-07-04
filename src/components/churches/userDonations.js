@@ -74,6 +74,7 @@ export default function SlidingPaneItem(props) {
             }, 2000)
         }
     }, [clickedCheck])
+
     return (
         <ItemHolder data-status={hover} displayItem={displayItem} heightOFdiv={heightOFdiv} padding={divPadding} margin={divMargin} border={divBorder}>
             <DonationDataContaner>
